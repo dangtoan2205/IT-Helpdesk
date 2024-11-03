@@ -51,5 +51,29 @@ Tích chọn hết phần này:
 
 ---
 ## Bước 4:
-Đặt tên Wifi thành Wifi chính, đặt lại địa chỉ IP tính
+Đặt tên Wifi thành Wifi chính, đặt lại địa chỉ IP tĩnh
 ![image](https://github.com/user-attachments/assets/2932089b-17af-4294-b390-bf1011439c3a)
+
+--- 
+## Bước 5:
+Cấu hình cho Wifi Mesh 
+Kiểm tra các Wifi đã bật Mesh lên hay chưa
+![image](https://github.com/user-attachments/assets/c60c7ed3-0aba-4274-9533-b887cf4f622c)
+
+- Đặt Mesh
+- System (Góc trên cùng bên phải) ->  General -> Show advanced options
+- Extended SSID -> Disable 
+
+Khởi động lại
+![image](https://github.com/user-attachments/assets/fad2b3a3-ca92-4fd8-82cb-f420b27e9093)
+- Maintenance -> Reboot -> Reboot All
+
+---
+## Tạo Wifi cho mạng khách
+![image](https://github.com/user-attachments/assets/0b8ce3e0-26a8-49c4-81da-2ca5c920915f)
+
+
+
+
+
+
