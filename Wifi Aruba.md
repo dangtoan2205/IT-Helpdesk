@@ -81,6 +81,8 @@ Khởi động lại
 
 ![image](https://github.com/user-attachments/assets/0b8ce3e0-26a8-49c4-81da-2ca5c920915f)
 
+![image](https://github.com/user-attachments/assets/77443bf8-bf7d-4d9e-ad2f-4d120d7e0060)
+
 
 
 
