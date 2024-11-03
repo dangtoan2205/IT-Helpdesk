@@ -83,6 +83,7 @@ Khởi động lại
 
 ![image](https://github.com/user-attachments/assets/77443bf8-bf7d-4d9e-ad2f-4d120d7e0060)
 
+![image](https://github.com/user-attachments/assets/7a299ad8-c91b-4b08-b365-6ecdd9d11711)
 
 
 
