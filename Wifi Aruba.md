@@ -20,6 +20,7 @@ Chọn Region Việt Nam
 ---
 ## Bước 3: 
 Tạo SSID
+
 ![image](https://github.com/user-attachments/assets/132e7a39-f79d-494d-946e-874a491d00c0)
 
 Bấm vào chữ: New
@@ -27,6 +28,7 @@ Bấm vào chữ: New
 ![image](https://github.com/user-attachments/assets/5c4d2247-5bc2-444a-9d59-d3951bd70f62)
 
 Đặt tên Network (Đây không phải là tên Wifi)
+
 ![image](https://github.com/user-attachments/assets/376f1472-0aef-4525-8a3b-8e1554c1d63c)
 
 Đặt tên cho Wifi 
