@@ -47,6 +47,7 @@ Bấm vào chữ: New
 ![image](https://github.com/user-attachments/assets/40597e8c-f76f-4f5a-b06f-6846eaf114dc)
 
 Tích chọn hết phần này:
+
 ![image](https://github.com/user-attachments/assets/d2d388b2-43e6-4a3c-8732-62919184a367)
 
 - Next
@@ -55,12 +56,14 @@ Tích chọn hết phần này:
 ---
 ## Bước 4:
 Đặt tên Wifi thành Wifi chính, đặt lại địa chỉ IP tĩnh
+
 ![image](https://github.com/user-attachments/assets/2932089b-17af-4294-b390-bf1011439c3a)
 
 --- 
 ## Bước 5:
 Cấu hình cho Wifi Mesh 
 Kiểm tra các Wifi đã bật Mesh lên hay chưa
+
 ![image](https://github.com/user-attachments/assets/c60c7ed3-0aba-4274-9533-b887cf4f622c)
 
 - Đặt Mesh
@@ -68,11 +71,14 @@ Kiểm tra các Wifi đã bật Mesh lên hay chưa
 - Extended SSID -> Disable 
 
 Khởi động lại
+
 ![image](https://github.com/user-attachments/assets/fad2b3a3-ca92-4fd8-82cb-f420b27e9093)
+
 - Maintenance -> Reboot -> Reboot All
 
 ---
 ## Tạo Wifi cho mạng khách
+
 ![image](https://github.com/user-attachments/assets/0b8ce3e0-26a8-49c4-81da-2ca5c920915f)
 
 
