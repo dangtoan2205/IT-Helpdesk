@@ -14,6 +14,7 @@ Cấu hình wifi ARUBA
 ![image](https://github.com/user-attachments/assets/af9b2bfb-6eb2-497b-a09a-251755bbc163)
 
 Chọn Region Việt Nam
+
 ![image](https://github.com/user-attachments/assets/8c098bf9-21ba-4f89-9505-361d77b08d33)
 
 ---
