@@ -3,7 +3,7 @@ Cấu hình wifi ARUBA
 ## Bước 1
 1/ Bắt mạng Wifi : SetMeUp-C7:76"44 (Bắt wifi bất kỳ)
 2/ Sử dụng Scan IP Address để lấy địa chỉ IP của Aruba
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/5b547db8-1f56-405c-a1a1-e54837659606)
 
 ---
 ## Bước 2
@@ -11,38 +11,47 @@ Cấu hình wifi ARUBA
 - Username: admin
 - Password: admin
 
-![alt text](image-1.png)
+![image](https://github.com/user-attachments/assets/d3e0a160-6c3f-48c8-ab8e-7328a69fbc3f)
+
 
 Chọn Region Việt Nam
-![alt text](image-2.png)
+![image](https://github.com/user-attachments/assets/8d6d8e06-daea-4bbf-86a1-ce5c0aa5d48f)
+
 
 ---
 ## Bước 3: 
 Tạo SSID
-![alt text](image-3.png)
+![image](https://github.com/user-attachments/assets/2c912c24-9544-4492-b318-b7f13e66bb8f)
+
 Bấm vào chữ: New
 
-![alt text](image-4.png)
+![image](https://github.com/user-attachments/assets/e68b725f-47e1-491b-8189-18eeae25c5fd)
+
 Đặt tên Network (Đây không phải là tên Wifi)
-![alt text](image-5.png)
+![image](https://github.com/user-attachments/assets/cf0822c3-2e4d-4e3e-8b5a-2f0f944de53f)
+
 
 Đặt tên cho Wifi 
 - ESSID: (Tên wifi)
 
-![alt text](image-6.png)
+![image](https://github.com/user-attachments/assets/5c740d08-8165-46ae-a9a0-afeaa545a9a4)
+
 
 - Next 
 
-![alt text](image-7.png)
+![image](https://github.com/user-attachments/assets/aa66fcc3-fd78-4aca-bf59-9db83b10499a)
+
 
 ---
 ## Bước 4:
 - Passphrase: Đặt mật khẩu cho Wifi
 
-![alt text](image-8.png)
+![image](https://github.com/user-attachments/assets/51d4e5df-6a2b-4888-a925-94c8a4914e7c)
+
 
 Tích chọn hết phần này:
-![alt text](image-9.png)
+![image](https://github.com/user-attachments/assets/8538fe93-a089-4c0a-a24d-ab28953164cd)
+
 
 - Next
 - Finish
