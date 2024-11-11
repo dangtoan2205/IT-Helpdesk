@@ -2,7 +2,7 @@ Configure Wifi Aruba AP 225
 -----------
 1/ Dùng Scan IP Address để lấy thông tin IP của Aruba
 2/ Truy cập vào địa chỉ ip đó trên trình duyệt
-![image](https://github.com/user-attachments/assets/bedd4595-4a68-4146-bdd1-234c68ae4709)
+![image](https://github.com/user-attachments/assets/bedd4595-4a68-4146-bdd1-234c68ae4709) </br>
 
 Username: admin
 Password: admin (hoặc Serial Number trên thiết bị).
