@@ -105,20 +105,25 @@ CREATE DATABASE snipeit_db;
 exit;
 ```
 
-====
-Step 4: Download Snipe-IT
 
+## Step 4: Download Snipe-IT
+``
 sudo git clone https://github.com/snipe/snipe-it snipeit
-
-==== symlink  create ==== 
-
+```
+==== symlink  create ====
+```
+pwd
+```
+```
 sudo ln -sf /home/ubuntu/projectpath   /var/www/html
+```
 
-Step 5: Install Dependencies via Composer  === 
+## Step 5: Install Dependencies via Composer
+
 
 sudo composer install --no-dev --prefer-source
 
-Step 6: Configure Environment Variables   === 
+## Step 6: Configure Environment Variables   === 
 
 sudo cp .env.example .env
 
