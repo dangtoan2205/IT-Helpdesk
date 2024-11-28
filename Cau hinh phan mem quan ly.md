@@ -31,17 +31,17 @@ phpmyadmin upload size incress conf
 sudo vi /etc/php/8.1/apache2/php.ini
 ```
 
-max_execution_time = -1 <//b>
-max_input_time = -1 <//b>
-memory_limit = -1 <//b>
-post_max_size = 3000M <//b>
-upload_max_filesize = 2048M <//b>
+max_execution_time = -1 </b>
+max_input_time = -1 </b>
+memory_limit = -1 </b>
+post_max_size = 3000M </b>
+upload_max_filesize = 2048M </b>
 
 ```
 sudo vi /etc/apache2/mods-enabled/dir.conf
 ```
 
-<Đặt index.php lên đầu tiên và xóa index.php đoạn gần cuối đi> <//b>
+<Đặt index.php lên đầu tiên và xóa index.php đoạn gần cuối đi> </b>
 Replace index.php  , index.html
 
 ```
