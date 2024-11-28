@@ -31,6 +31,7 @@ phpmyadmin upload size incress conf
 sudo vi /etc/php/8.1/apache2/php.ini
 ```
 
+Edit
 ```
 max_execution_time = -1
 max_input_time = -1
