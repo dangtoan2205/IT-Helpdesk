@@ -10,14 +10,17 @@ df -Th
 3/ Đổi Password
 ```
 sudo -i
+```
+```
 passwd
 ```
 
 4/ Đặt địa chỉ IP tĩnh cho Ubnutu Server
 ```
 nano /etc/netplan/ --bấm tab--
-VD: nano /etc/netplan/50-cloud-init.yaml
 ```
+VD: nano /etc/netplan/50-cloud-init.yaml
+
 
 File cấu hình
 ```
