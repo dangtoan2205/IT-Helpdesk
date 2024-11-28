@@ -30,11 +30,12 @@ phpmyadmin upload size incress conf
 ```
 sudo vi /etc/php/8.1/apache2/php.ini
 ```
-max_execution_time = -1
-max_input_time = -1
-memory_limit = -1
-post_max_size = 3000M
-upload_max_filesize = 2048M
+
+max_execution_time = -1 <//b>
+max_input_time = -1 <//b>
+memory_limit = -1 <//b>
+post_max_size = 3000M <//b>
+upload_max_filesize = 2048M <//b>
 
 ```
 sudo vi /etc/apache2/mods-enabled/dir.conf
