@@ -10,9 +10,17 @@ sudo apt upgrade
 ## Step 2: Install Required Dependencies
 ```
 sudo add-apt-repository ppa:ondrej/php
+```
+```
 sudo apt update
+```
+```
 sudo apt install php8.1 -y
+```
+```
 sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath php8.1-redis php8.1-fpm php8.1-intl php8.1-zip php8.1-soap php8.1-opcache
+```
+```
 sudo apt install apache2 mysql-server php php-cli php-mysql php-mbstring php-xml php-curl php-zip php-gd composer git unzip
 ```
 
@@ -32,7 +40,7 @@ upload_max_filesize = 2048M
 sudo vi /etc/apache2/mods-enabled/dir.conf
 ```
 
-<Đặt index.php lên đầu tiên và xóa index.php đoạn gần cuối đi>
+<Đặt index.php lên đầu tiên và xóa index.php đoạn gần cuối đi> <//b>
 Replace index.php  , index.html
 
 ```
