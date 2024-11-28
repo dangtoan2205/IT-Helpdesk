@@ -107,7 +107,7 @@ exit;
 
 
 ## Step 4: Download Snipe-IT
-``
+```
 sudo git clone https://github.com/snipe/snipe-it snipeit
 ```
 ==== symlink  create ====
@@ -120,16 +120,34 @@ sudo ln -sf /home/ubuntu/projectpath   /var/www/html
 
 ## Step 5: Install Dependencies via Composer
 
-
+```
 sudo composer install --no-dev --prefer-source
+```
+
+-> yes
+Nếu bị lỗi này
+![image](https://github.com/user-attachments/assets/d8f704c2-b012-4663-a227-5fa9063f8572)
+
+```
+php -v
+```
+```
+sudo update-alternatives --config php
+```
+-> 2
+![image](https://github.com/user-attachments/assets/578700f7-0a9b-4308-8fe2-63b2254fb863)
+
+```
+sudo composer install --no-dev --prefer-source
+```
 
 ## Step 6: Configure Environment Variables   === 
-
+```
 sudo cp .env.example .env
 
-
 sudo vi .env
-
+```
+```
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=http://your_domain_or_ip
@@ -139,23 +157,38 @@ DB_HOST=127.0.0.1
 DB_DATABASE=snipeit_db
 DB_USERNAME=snipeit_user
 DB_PASSWORD=your_password
+```
 
-Step 7: Set Permissions  === 
+```
+php artisan optimize:clear
+```
 
+## Step 7: Set Permissions
+
+```
 sudo chmod -R 755 /home/ubuntu
+```
+```
 sudo chown -R www-data:www-data storage public/uploads
+```
+```
 sudo chmod -R 755 storage public/uploads
+```
+```
 sudo chown -R www-data:www-data snipeit
+```
 
-Step 8: Generate Application Key  === 
-
+## Step 8: Generate Application Key  === 
+```
 sudo php artisan key:generate
+```
 
 
-Step 9: Configure Apache  ====
-
+## Step 9: Configure Apache  ====
+```
 sudo vi /etc/apache2/sites-available/snipeit.conf
-
+```
+```
 <VirtualHost *:80>
     ServerAdmin admin@example.com
     DocumentRoot /var/www/html/snipeit/public
@@ -169,19 +202,32 @@ sudo vi /etc/apache2/sites-available/snipeit.conf
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+```
 
-
-
-===
-
+```
 sudo a2ensite snipeit.conf
+```
+```
+sudo systemctl reload apache2
+```
+```
 sudo a2enmod rewrite
-
-
+```
+```
 sudo systemctl restart apache2
+```
+## Step 11: Set Up Cron Jobs  
+```
+cd /var/www/html/
+ls
+```
+```
+sudo chmod -R 755 snipeit
+```
+```
+sudo chown -R www-data:www-data snipeit
+```
+```
+sudo service apache2 restart
+```
 
-Step 11: Set Up Cron Jobs  == =
-
-sudo crontab -e
-
-* * * * * php /var/www/html/snipeit/artisan schedule:run >> /dev/null 2>&1
