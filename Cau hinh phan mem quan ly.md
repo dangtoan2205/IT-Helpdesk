@@ -1,172 +1,169 @@
 Cấu hình phần mềm quản lý thiết bị 
 ---------
-## Bước 1: Cài đặt các gói cần thiết
-Trước tiên, hãy cài đặt các phần mềm cần thiết cho máy chủ của bạn:
+## Step 1: Update System
 
-1. **Cập nhật hệ thống:**
+sudo apt update
+sudo apt upgrade
+
+
+## Step 2: Install Required Dependencies
+
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install php8.1 -y
+sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath php8.1-redis php8.1-fpm php8.1-intl php8.1-zip php8.1-soap php8.1-opcache
+sudo apt install apache2 mysql-server php php-cli php-mysql php-mbstring php-xml php-curl php-zip php-gd composer git unzip
+
+===
+phpmyadmin upload size incress conf  
+=====
 
 ```
-sudo apt update && sudo apt upgrade -y
+sudo vi /etc/php/8.1/apache2/php.ini
 ```
-
-2. Cài đặt các gói phần mềm cần thiết:
-
-- Nginx: Máy chủ web.
-- MySQL: Cơ sở dữ liệu.
-- PHP: Ngôn ngữ lập trình PHP với các tiện ích cần thiết.
-Cài đặt các gói này:
+max_execution_time = -1
+max_input_time = -1
+memory_limit = -1
+post_max_size = 3000M
+upload_max_filesize = 2048M
 
 ```
-sudo apt install nginx mysql-server php-fpm php-mysql php-cli php-xml php-mbstring php-curl php-zip php-bcmath git unzip curl -y
+sudo vi /etc/apache2/mods-enabled/dir.conf
 ```
-## Bước 2: Cấu hình MySQL
-1. **Tạo cơ sở dữ liệu và người dùng cho Snipe-IT:**
+
+<Đặt index.php lên đầu tiên và xóa index.php đoạn gần cuối đi>
+Replace index.php  , index.html
+
 ```
-sudo mysql -u root -p
+sudo systemctl restart php8.1-fpm.service
 ```
-Sau đó nhập mật khẩu của MySQL root và thực hiện các câu lệnh sau trong MySQL shell:
+
 ```
-CREATE DATABASE snipeit;
-CREATE USER 'snipeituser'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON snipeit.* TO 'snipeituser'@'localhost';
+sudo phpenmod mbstring
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+```
+
+conf
+
+```
+sudo vi /etc/apache2/apache2.conf
+```
+None -> All
+
+![image](https://github.com/user-attachments/assets/db23a42a-4c9b-45c3-a86a-ccee26c98f51)
+
+![image](https://github.com/user-attachments/assets/7f4111a4-d1db-46ea-b819-fc9e50ba2db6)
+
+
+## Step 3: Configure MySQL
+```
+sudo mysql_secure_installation
+```
+![image](https://github.com/user-attachments/assets/df94a06b-0938-452d-9c73-6dd0705641d9)
+
+![image](https://github.com/user-attachments/assets/55423b8e-e188-4767-9d5a-79e51ac10ec1)
+
+![image](https://github.com/user-attachments/assets/27076d55-333e-4430-a5d7-c8e4efc3803f)
+
+![image](https://github.com/user-attachments/assets/44d574b5-9486-48fe-be79-c5cb28dd3e6b)
+
+![image](https://github.com/user-attachments/assets/b8ef832d-dd9e-48fb-ba1f-20e2fe937650)
+
+![image](https://github.com/user-attachments/assets/00f452d1-ce93-4416-8161-05bfcca759fa)
+
+```
+sudo mysql
+```
+
+```
+CREATE USER 'snipeit_user'@'localhost' IDENTIFIED BY 'your_password';
+```
+```
+GRANT ALL PRIVILEGES ON snipeit_db.* TO 'snipeit_user'@'localhost';
+```
+```
 FLUSH PRIVILEGES;
-EXIT;
 ```
-## Bước 3: Clone dự án Snipe-IT từ GitHub
-1. **Chuyển đến thư mục web root của Nginx (hoặc tạo thư mục mới nếu cần):**
 ```
-cd /var/www
-sudo git clone https://github.com/snipe/snipe-it.git snipeit
+CREATE DATABASE snipeit_db;
 ```
-
-2. **Cấp quyền cho thư mục:**
 ```
-sudo chown -R www-data:www-data /var/www/snipeit
-sudo chmod -R 755 /var/www/snipeit
-```
-## Bước 4: Cấu hình PHP
-1. **Mở và chỉnh sửa file PHP `php.ini` để tối ưu hóa cho Snipe-IT:**
-
-```
-sudo nano /etc/php/7.4/fpm/php.ini
+exit;
 ```
 
-Thực hiện các thay đổi sau:
+====
+Step 4: Download Snipe-IT
 
-- Tìm và chỉnh sửa `date.timezone`:
-```
-date.timezone = "Asia/Ho_Chi_Minh"
-```
-Tăng giới hạn bộ nhớ PHP nếu cần (tùy chọn thêm):
-```
-memory_limit = 256M
-```
-2. **Khởi động lại PHP-FPM:**
-```
-sudo systemctl restart php7.4-fpm
-```
-## Bước 5: Cấu hình Nginx
-1. **Tạo file cấu hình Nginx cho Snipe-IT:** Tạo file cấu hình Nginx cho Snipe-IT trong thư mục `/etc/nginx/sites-available/`:
-```
-sudo nano /etc/nginx/sites-available/snipeit
-```
+sudo git clone https://github.com/snipe/snipe-it snipeit
 
-Thêm nội dung sau vào file:
-```
-server {
-    listen 80;
-    server_name seta-snipeit.com;
+==== symlink  create ==== 
 
-    root /var/www/snipeit/public;
-    index index.php index.html index.htm;
+sudo ln -sf /home/ubuntu/projectpath   /var/www/html
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
+Step 5: Install Dependencies via Composer  === 
 
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
+sudo composer install --no-dev --prefer-source
 
-    location ~ /\.ht {
-        deny all;
-    }
-}
-```
-2. **Kích hoạt site và kiểm tra cấu hình:**
+Step 6: Configure Environment Variables   === 
 
-```
-sudo ln -s /etc/nginx/sites-available/snipeit /etc/nginx/sites-enabled/
-sudo nginx -t
-```
-
-3. **Khởi động lại Nginx:**
-
-```
-sudo systemctl restart nginx
-```
-## Bước 6: Cấu hình tên miền
-1. **Chỉnh sửa DNS để trỏ tên miền tới địa chỉ IP của máy chủ:**
-
-- Truy cập trang quản lý DNS của nhà cung cấp tên miền bạn đang sử dụng.
-- Tạo một bản ghi **A record** trỏ tên miền `seta-snipeit.com` đến địa chỉ IP của máy chủ Ubuntu.
-2. **Kiểm tra tên miền:** Sau khi DNS được cập nhật (có thể mất từ vài phút đến vài giờ), bạn có thể kiểm tra bằng cách truy cập `http://seta-snipeit.com` từ trình duyệt.
-## Bước 7: Cài đặt ứng dụng Snipe-IT
-1. **Di chuyển vào thư mục Snipe-IT:**
-
-```
-cd /var/www/snipeit
-```
-
-2. **Cài đặt các phụ thuộc:**
-
-```
-sudo composer install --no-dev --optimize-autoloader
-```
-
-3. **Tạo file cấu hình** `.env`:
-
-```
 sudo cp .env.example .env
-```
 
-4. **Cấu hình kết nối cơ sở dữ liệu: Mở file `.env` để chỉnh sửa thông tin kết nối MySQL:**
 
-```
-sudo nano .env
-```
+sudo vi .env
 
-Thay đổi các dòng sau:
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=http://your_domain_or_ip
 
-```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=snipeit
-DB_USERNAME=snipeituser
-DB_PASSWORD=password
-```
+DB_DATABASE=snipeit_db
+DB_USERNAME=snipeit_user
+DB_PASSWORD=your_password
 
-5. **Tạo key cho ứng dụng:**
+Step 7: Set Permissions  === 
 
-```
+sudo chmod -R 755 /home/ubuntu
+sudo chown -R www-data:www-data storage public/uploads
+sudo chmod -R 755 storage public/uploads
+sudo chown -R www-data:www-data snipeit
+
+Step 8: Generate Application Key  === 
+
 sudo php artisan key:generate
-```
 
-6. **Chạy migrations để tạo bảng trong cơ sở dữ liệu:**
 
-```
-sudo php artisan migrate --seed
-```
+Step 9: Configure Apache  ====
 
-## Bước 8: Kiểm tra và hoàn tất
-1. **Truy cập vào ứng dụng**: Mở trình duyệt và truy cập http://seta-snipeit.com. Bạn sẽ thấy giao diện đăng nhập của Snipe-IT.
+sudo vi /etc/apache2/sites-available/snipeit.conf
 
-2. **Đăng nhập với tài khoản quản trị mặc định (nếu cần thiết):** Mặc định, bạn có thể đăng nhập với thông tin tài khoản:
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    DocumentRoot /var/www/html/snipeit/public
+    ServerName your_domain_or_ip
 
-- Email: admin@admin.com
-- Password: password
-3. **Cấu hình thêm SSL (tuỳ chọn):** Nếu bạn muốn bảo mật kết nối với HTTPS, bạn có thể cài đặt Let's Encrypt SSL cho Nginx.
+    <Directory /var/www/html/snipeit/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+
+
+===
+
+sudo a2ensite snipeit.conf
+sudo a2enmod rewrite
+
+
+sudo systemctl restart apache2
+
+Step 11: Set Up Cron Jobs  == =
+
+sudo crontab -e
+
+* * * * * php /var/www/html/snipeit/artisan schedule:run >> /dev/null 2>&1
