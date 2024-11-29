@@ -90,10 +90,10 @@ sudo mysql
 ```
 
 ```
-CREATE USER 'snipeit_user'@'localhost' IDENTIFIED BY 'your_password';
+CREATE USER 'snipeit'@'localhost' IDENTIFIED BY 'adminlocal123a@';
 ```
 ```
-GRANT ALL PRIVILEGES ON snipeit_db.* TO 'snipeit_user'@'localhost';
+GRANT ALL PRIVILEGES ON snipeit_db.* TO 'snipeit'@'localhost';
 ```
 ```
 FLUSH PRIVILEGES;
