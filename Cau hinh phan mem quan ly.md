@@ -28,7 +28,7 @@ phpmyadmin upload size incress conf
 ===
 
 ```
-sudo vi /etc/php/8.1/apache2/php.ini
+sudo nano /etc/php/8.1/apache2/php.ini
 ```
 
 Edit
@@ -41,7 +41,7 @@ upload_max_filesize = 2048M
 ```
 
 ```
-sudo vi /etc/apache2/mods-enabled/dir.conf
+sudo nano /etc/apache2/mods-enabled/dir.conf
 ```
 
 <Đặt index.php lên đầu tiên và xóa index.php đoạn gần cuối đi> </b>
@@ -60,7 +60,7 @@ sudo systemctl restart apache2
 conf
 
 ```
-sudo vi /etc/apache2/apache2.conf
+sudo nano /etc/apache2/apache2.conf
 ```
 None -> All
 
@@ -145,7 +145,7 @@ sudo composer install --no-dev --prefer-source
 ```
 sudo cp .env.example .env
 
-sudo vi .env
+sudo nano .env
 ```
 ```
 APP_ENV=production
@@ -186,7 +186,7 @@ sudo php artisan key:generate
 
 ## Step 9: Configure Apache  ====
 ```
-sudo vi /etc/apache2/sites-available/snipeit.conf
+sudo nano /etc/apache2/sites-available/snipeit.conf
 ```
 ```
 <VirtualHost *:80>
