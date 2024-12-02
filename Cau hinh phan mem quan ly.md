@@ -151,13 +151,13 @@ sudo nano .env
 ```
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=http://your_domain_or_ip
+APP_URL=http://192.168.81.156
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_DATABASE=snipeit_db
-DB_USERNAME=snipeit_user
-DB_PASSWORD=your_password
+DB_USERNAME=snipeit
+DB_PASSWORD=Adminlocal123a@
 ```
 
 ```
