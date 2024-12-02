@@ -115,7 +115,7 @@ sudo git clone https://github.com/snipe/snipe-it snipeit
 pwd
 ```
 ```
-sudo ln -sf /home/ubuntu/projectpath   /var/www/html
+sudo ln -sf /home/ubuntu/snipeit   /var/www/html
 ```
 
 ## Step 5: Install Dependencies via Composer
