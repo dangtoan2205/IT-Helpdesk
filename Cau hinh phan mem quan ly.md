@@ -144,7 +144,8 @@ sudo composer install --no-dev --prefer-source
 ## Step 6: Configure Environment Variables   === 
 ```
 sudo cp .env.example .env
-
+```
+```
 sudo nano .env
 ```
 ```
@@ -160,7 +161,7 @@ DB_PASSWORD=your_password
 ```
 
 ```
-php artisan optimize:clear
+sudo php artisan optimize:clear
 ```
 
 ## Step 7: Set Permissions
