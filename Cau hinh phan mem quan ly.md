@@ -124,8 +124,8 @@ sudo ln -sf /home/ubuntu/snipeit   /var/www/html
 sudo composer install --no-dev --prefer-source
 ```
 
--> yes
-Nếu bị lỗi này
+-> yes </br>
+Nếu bị lỗi này, fix như sau:
 ![image](https://github.com/user-attachments/assets/d8f704c2-b012-4663-a227-5fa9063f8572)
 
 ```
