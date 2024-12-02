@@ -90,7 +90,7 @@ sudo mysql
 ```
 
 ```
-CREATE USER 'snipeit'@'localhost' IDENTIFIED BY 'adminlocal123a@';
+CREATE USER 'snipeit'@'localhost' IDENTIFIED BY 'Adminlocal123a@';
 ```
 ```
 GRANT ALL PRIVILEGES ON snipeit_db.* TO 'snipeit'@'localhost';
