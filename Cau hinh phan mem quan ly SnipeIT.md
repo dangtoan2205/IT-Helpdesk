@@ -110,7 +110,8 @@ exit;
 ```
 sudo git clone https://github.com/snipe/snipe-it snipeit
 ```
-==== symlink  create ====
+
+==== (Khong can thiet) symlink  create ====
 ```
 pwd
 ```
