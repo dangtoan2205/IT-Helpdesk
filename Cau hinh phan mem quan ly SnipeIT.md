@@ -149,7 +149,7 @@ sudo cp .env.example .env
 sudo nano .env
 ```
 ```
-APP_ENV=production
+APP_ENV=local
 APP_DEBUG=false
 APP_URL=http://192.168.81.156
 
@@ -220,6 +220,8 @@ sudo systemctl restart apache2
 ## Step 11: Set Up Cron Jobs  
 ```
 cd /var/www/html/
+```
+```
 ls
 ```
 ```
