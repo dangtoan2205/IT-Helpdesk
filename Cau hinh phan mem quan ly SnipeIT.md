@@ -272,6 +272,12 @@ sudo systemctl restart apache2
 sudo ss -tuln | grep :81
 ```
 
+- Cấu hình trong .env
+```
+ nano /var/www/html/snipe-it/.env
+```
+![image](https://github.com/user-attachments/assets/f29e9389-9ec9-418e-9bea-58afadac42b9)
+
 ## Nginx
 
 
