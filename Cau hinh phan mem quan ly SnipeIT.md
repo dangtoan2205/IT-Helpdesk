@@ -235,3 +235,67 @@ sudo chown -R www-data:www-data snipeit
 sudo service apache2 restart
 ```
 
+
+-----
+Cấu hình chuyển Apache2 thành port 81, Nginx thành port 80
+---
+## Apache 
+
+- Mở file cấu hình của Apache (000-default.conf hoặc file cấu hình tương ứng trong /etc/apache2/sites-available/):
+```
+sudo nano /etc/apache2/ports.conf
+```
+![image](https://github.com/user-attachments/assets/20b3c81c-9e3e-45d7-88ba-60886ac03259)
+
+```
+/etc/apache2/sites-available/snipeit.conf
+```
+![image](https://github.com/user-attachments/assets/bf61264e-e9df-4d23-9399-a1c0854b048e)
+
+- Thêm hoặc sửa dòng sau để Apache lắng nghe trên cổng 81:
+```
+Listen 81
+```
+![image](https://github.com/user-attachments/assets/6e0a1b41-71bd-4a12-9b94-56853488ec95)
+
+- Sửa phần VirtualHost để sử dụng cổng 81:
+
+![image](https://github.com/user-attachments/assets/2d9e24ef-d4fe-451a-9673-975618bf27f9)
+
+- Sau khi chỉnh sửa xong, bạn cần reload hoặc restart lại Apache để áp dụng cấu hình mới:
+```
+sudo systemctl restart apache2
+```
+
+- Kiểm tra Apache đang chạy trên cổng 81:
+```
+sudo ss -tuln | grep :81
+```
+
+## Nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
