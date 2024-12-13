@@ -208,51 +208,51 @@ sudo nano /etc/openvpn/server/server.conf
 
 ![image](https://github.com/user-attachments/assets/705f5c13-9bb2-4341-b3df-5c4e60b42acd)
 
-**Modify the file based on your preferences. Refer to the explanations below:**
+-  **Modify the file based on your preferences. Refer to the explanations below:**
 
-**port 1194:** The port on which OpenVPN will listen for incoming connections. (Cổng mà OpenVPN sẽ lắng nghe các kết nối đến)
+-  **port 1194:** The port on which OpenVPN will listen for incoming connections. (Cổng mà OpenVPN sẽ lắng nghe các kết nối đến)
 
-**proto udp4:** Specifies the use of UDP as the transport protocol for communication. (Chỉ định sử dụng UDP làm giao thức truyền tải cho giao tiếp.)
+-  **proto udp4:** Specifies the use of UDP as the transport protocol for communication. (Chỉ định sử dụng UDP làm giao thức truyền tải cho giao tiếp.)
 
-**dev tun:** Defines the type of tunnel network device to be used. (Xác định loại thiết bị mạng tunnel sẽ được sử dụng.)
+-  **dev tun:** Defines the type of tunnel network device to be used. (Xác định loại thiết bị mạng tunnel sẽ được sử dụng.)
 
-**ca ca.crt:** Specifies the Certificate Authority certificate file to verify the authenticity of remote peers. (Chỉ định tệp chứng chỉ của Cơ quan cấp chứng chỉ (CA) để xác minh tính hợp lệ của các đối tác từ xa.)
+-  **ca ca.crt:** Specifies the Certificate Authority certificate file to verify the authenticity of remote peers. (Chỉ định tệp chứng chỉ của Cơ quan cấp chứng chỉ (CA) để xác minh tính hợp lệ của các đối tác từ xa.)
 
-**cert issued/server.crt:** The server's certificate file is used for authentication. (Tệp chứng chỉ của máy chủ được sử dụng để xác thực.)
+-  **cert issued/server.crt:** The server's certificate file is used for authentication. (Tệp chứng chỉ của máy chủ được sử dụng để xác thực.)
 
-**key private/server.key:** The server's private key file, which must be kept confidential. (Tệp khóa riêng của máy chủ, phải được giữ bí mật.)
+-  **key private/server.key:** The server's private key file, which must be kept confidential. (Tệp khóa riêng của máy chủ, phải được giữ bí mật.)
 
-**dh dh.pem:** The Diffie-Hellman parameters file used for key exchange. (Tệp tham số Diffie-Hellman được sử dụng cho việc trao đổi khóa.)
+-  **dh dh.pem:** The Diffie-Hellman parameters file used for key exchange. (Tệp tham số Diffie-Hellman được sử dụng cho việc trao đổi khóa.)
 
-**topology subnet:** Sets the topology to the subnet, allowing OpenVPN to route traffic between clients. (Cài đặt topology là subnet, cho phép OpenVPN định tuyến lưu lượng giữa các client.)
+-  **topology subnet:** Sets the topology to the subnet, allowing OpenVPN to route traffic between clients. (Cài đặt topology là subnet, cho phép OpenVPN định tuyến lưu lượng giữa các client.)
 
-**server 172.16.20.0 255.255.255.0:** Defines the server's virtual IP address pool and subnet mask. (Định nghĩa phạm vi địa chỉ IP ảo của máy chủ và mặt nạ mạng con.)
+-  **server 172.16.20.0 255.255.255.0:** Defines the server's virtual IP address pool and subnet mask. (Định nghĩa phạm vi địa chỉ IP ảo của máy chủ và mặt nạ mạng con.)
 
-**ifconfig-pool-persist /var/log/openvpn/ipp.txt:** Stores persistent IP assignments in the specified file. (Lưu trữ các phân phối IP bền vững trong tệp được chỉ định.)
+-  **ifconfig-pool-persist /var/log/openvpn/ipp.txt:** Stores persistent IP assignments in the specified file. (Lưu trữ các phân phối IP bền vững trong tệp được chỉ định.)
 
-**push "redirect-gateway def1 bypass-dhcp":** Redirects the client's default gateway through the VPN tunnel. (Chuyển hướng gateway mặc định của client qua tunnel VPN.)
+-  **push "redirect-gateway def1 bypass-dhcp":** Redirects the client's default gateway through the VPN tunnel. (Chuyển hướng gateway mặc định của client qua tunnel VPN.)
 
-**push "dhcp-option DNS 208.67.222.222" and push "dhcp-option DNS 208.67.220.220":** Configures DNS servers for clients. (Cấu hình các máy chủ DNS cho client.)
+-  **push "dhcp-option DNS 208.67.222.222" and push "dhcp-option DNS 208.67.220.220":** Configures DNS servers for clients. (Cấu hình các máy chủ DNS cho client.)
 
-**client-to-client:** Allows communication between clients connected to the same OpenVPN server. (Cho phép giao tiếp giữa các client kết nối với cùng một máy chủ OpenVPN.)
+-  **client-to-client:** Allows communication between clients connected to the same OpenVPN server. (Cho phép giao tiếp giữa các client kết nối với cùng một máy chủ OpenVPN.)
 
-**keepalive 10 120:** Sets a 10-second interval for ping/keepalive messages. (Cài đặt khoảng thời gian 10 giây cho các tin nhắn ping/keepalive.)
+-  **keepalive 10 120:** Sets a 10-second interval for ping/keepalive messages. (Cài đặt khoảng thời gian 10 giây cho các tin nhắn ping/keepalive.)
 
-**tls-auth ta.key 0:** Utilizes a secret TLS authentication key for added security. (Sử dụng khóa xác thực TLS bí mật để tăng cường bảo mật.)
+-  **tls-auth ta.key 0:** Utilizes a secret TLS authentication key for added security. (Sử dụng khóa xác thực TLS bí mật để tăng cường bảo mật.)
 
-**cipher AES-256-CBC:** Specifies the encryption cipher for data transmission. (Xác định thuật toán mã hóa cho việc truyền tải dữ liệu.)
+-  **cipher AES-256-CBC:** Specifies the encryption cipher for data transmission. (Xác định thuật toán mã hóa cho việc truyền tải dữ liệu.)
 
-**persist-key and persist-tun:** Ensures that OpenVPN's encryption keys and tunnel network device settings persist across restarts. (Đảm bảo rằng các khóa mã hóa của OpenVPN và cài đặt thiết bị mạng tunnel sẽ tồn tại sau các lần khởi động lại.)
+-  **persist-key and persist-tun:** Ensures that OpenVPN's encryption keys and tunnel network device settings persist across restarts. (Đảm bảo rằng các khóa mã hóa của OpenVPN và cài đặt thiết bị mạng tunnel sẽ tồn tại sau các lần khởi động lại.)
 
-**status /var/log/openvpn/openvpn-status.log:** Specifies the file to store runtime status information. (Chỉ định tệp để lưu trữ thông tin trạng thái trong thời gian chạy.)
+-  **status /var/log/openvpn/openvpn-status.log:** Specifies the file to store runtime status information. (Chỉ định tệp để lưu trữ thông tin trạng thái trong thời gian chạy.)
 
-**log-append /var/log/openvpn/openvpn.log:** Appends log output to the specified log file. (Ghi thêm đầu ra log vào tệp log được chỉ định.)
+-  **log-append /var/log/openvpn/openvpn.log:** Appends log output to the specified log file. (Ghi thêm đầu ra log vào tệp log được chỉ định.)
 
-**verb 3:** Sets the verbosity level of OpenVPN's logging. (Cài đặt mức độ chi tiết của log OpenVPN.)
+-  **verb 3:** Sets the verbosity level of OpenVPN's logging. (Cài đặt mức độ chi tiết của log OpenVPN.)
 
-**explicit-exit-notify 1:** Informs clients to explicitly send an exit notification when disconnecting. (Thông báo cho client gửi thông báo thoát khi ngắt kết nối.)
+-  **explicit-exit-notify 1:** Informs clients to explicitly send an exit notification when disconnecting. (Thông báo cho client gửi thông báo thoát khi ngắt kết nối.)
 
-**auth SHA512:** Specifies the message digest algorithm for data integrity. (Chỉ định thuật toán băm thông điệp cho tính toàn vẹn dữ liệu.)
+-  **auth SHA512:** Specifies the message digest algorithm for data integrity. (Chỉ định thuật toán băm thông điệp cho tính toàn vẹn dữ liệu.)
 
 ![image](https://github.com/user-attachments/assets/77a29da4-d8d4-458c-863c-77329ff6c372)
 
