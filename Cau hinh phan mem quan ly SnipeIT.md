@@ -70,6 +70,17 @@ None -> All
 
 
 ## Step 3: Configure MySQL
+Install SQL
+```
+sudo apt update
+sudo apt install mysql-server
+```
+
+```
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
+
 ```
 sudo mysql_secure_installation
 ```
