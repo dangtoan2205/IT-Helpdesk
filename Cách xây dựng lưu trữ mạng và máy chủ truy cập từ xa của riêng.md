@@ -1,6 +1,7 @@
 Cách xây dựng lưu trữ mạng và máy chủ truy cập từ xa của riêng.
 ------------
 
+<a href="https://www.youtube.com/watch?v=_Nu5Ibv1ZQA"> Link Youtube </a>
 
 Chuẩn bị: 
   - Case PC : 1 ổ cứng SSD 12Gb, 1 ổ cứng HDD 1Tb
