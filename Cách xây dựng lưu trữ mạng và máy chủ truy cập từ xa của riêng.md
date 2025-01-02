@@ -77,6 +77,7 @@ Nhập tài khoản quản trị:
 ## Step 5: Setup cơ bản
 
 - Cài đặt múi giờ:
+  - - - -
 
   System Settings -> General -> Localization -> Settings
 
@@ -85,6 +86,7 @@ Nhập tài khoản quản trị:
   Timezone: Asia/Ho_Chi_Minh -> Save
 
 - Tạo một tài khoản mới, hạn chế dùng đến tài khoản quản trị
+  - - - -
 
   Credentials -> Local User -> Add 
 
@@ -96,7 +98,8 @@ Nhập tài khoản quản trị:
 
   Bấm chọn Save
 
-  - Tạo ổ lưu trữ
+- Tạo ổ lưu trữ
+  - - - - 
 
     Storage -> Storage Dashboard -> Create Pool
 
@@ -136,7 +139,8 @@ Nhập tài khoản quản trị:
 
   Tích Confirm -> Configure 
 
-  - Datasets -> Add Datasets
+- Datasets -> Add Datasets
+  - - - - -
  
   ![image](https://github.com/user-attachments/assets/dee5bd75-81cb-4700-9015-de02542128a9)
 
@@ -144,7 +148,8 @@ Nhập tài khoản quản trị:
 
   ![image](https://github.com/user-attachments/assets/08df16d4-7be0-4b42-9595-0223e5ac39fe)
 
-  - Shares -> Edit Filesystem ACL
+- Shares -> Edit Filesystem ACL
+  - - - - -
 
   ![image](https://github.com/user-attachments/assets/a72cf84a-d03e-4c97-aaca-69c796c0e3a8)
 
@@ -160,7 +165,8 @@ Nhập tài khoản quản trị:
 
   Chọn Save Access Control List
 
-  - Thiết lập tài khoản có quyền đọc và ghi đối tượng với thư mục được chia sẻ qua internet
+- Thiết lập tài khoản có quyền đọc và ghi đối tượng với thư mục được chia sẻ qua internet
+  - - - - -
 
   ![image](https://github.com/user-attachments/assets/ff4861fd-232b-4e20-8fc2-d11560e706ff)
  
@@ -200,35 +206,95 @@ Nhập tài khoản quản trị:
 
   Save
 
-  ![image](https://github.com/user-attachments/assets/f4034bef-6277-4cf1-8045-fbb8633fa350)
+  ![image](https://github.com/user-attachments/assets/f4034bef-6277-4cf1-8045-fbb8633fa350)  
 
 ## Step 6: truy cập File serve bằng mạng cục bộ
 
 - Window + R : \\192.168.1.16
 
-- Đặng nhập tài khoản, mật khẩu
+- Đăng nhập tài khoản, mật khẩu
 
 ![image](https://github.com/user-attachments/assets/2881e422-0c6a-4c08-af8d-fac0374a294a)
 
+## Step 7 : Cấu hình mạng riêng ảo
+
+- Vào App -> tìm kiếm WG Easy
+  - - - - -
+
+  ![image](https://github.com/user-attachments/assets/b2bf0cca-b4b1-4c4b-8320-3ff066823227)
+
+  ![image](https://github.com/user-attachments/assets/7ffc9953-2893-4c4c-9847-9d19ed7966e3)
+
+  Setup Pool To Install
+
+  ![image](https://github.com/user-attachments/assets/9d598c1f-f9cd-4e65-a71c-58baed5eff6b)
+
+  Choose a pool for App -> pool1 -> Choose
+
+  ![image](https://github.com/user-attachments/assets/e70a6159-5c52-4927-99f0-385bd3176ebe)
+
+  Tích Confirm -> Agree
+
+  ![image](https://github.com/user-attachments/assets/d7390900-15fb-40fc-8993-2193b075d83c)
+
+  ![image](https://github.com/user-attachments/assets/bbf37625-7a79-47ce-85a2-7c172241d9f3)
+
+  Hostname or IP sẽ sử dụng IP Public của nhà mạng cung cấp
+
+  ![image](https://github.com/user-attachments/assets/3e6831d1-eb31-4970-aeeb-444f578e6a16)
+
+  Password for WebUI -> Tự tạo
+
+  Device Name: enp5s0 mà ta đã sao chép từ trước
+
+  ![image](https://github.com/user-attachments/assets/fd9008fd-4982-4f1b-8aff-34c1a528156a)
+
+  ![image](https://github.com/user-attachments/assets/14ac6512-7213-4b55-82c1-b5186729a449)
+
+  Memory giảm xuống còn 2Gi
+
+  ![image](https://github.com/user-attachments/assets/7df042fc-5836-4f34-83cb-315d9838f325)
+
+  ![image](https://github.com/user-attachments/assets/20c9d4ee-aadb-4600-8269-9fb2121bfde4)
+
+  Bấm vào Web Portal để truy cập máy chủ mạng riêng ảo
+
+  ![image](https://github.com/user-attachments/assets/977f75b9-f355-414e-87d1-7be89b90a5ca)
+
+- Tiếp theo là tạo tệp cấu hình mới cho máy khách
+  - - - - -
+
+  ![image](https://github.com/user-attachments/assets/ba259e7b-fb0c-442e-ba24-fbf1c7f91288)
+
+  New Client
+
+  ![image](https://github.com/user-attachments/assets/877713a8-0155-4c1b-a704-a8125c269443)
+
+  Tạo Client mới -> User01 -> Create
+
+  ![image](https://github.com/user-attachments/assets/5aa07910-11e8-41a7-8234-35c56ca584e4)
+
+  Tải xuống tệp cấu hình
+
+  ![image](https://github.com/user-attachments/assets/767a5ba9-380e-465d-a417-aeabdc771542)
+
+  Chỉ định địa chỉ IP công khai cho máy chủ lưu trữ tệp. Vào trang quản lý bộ định tuyến 
+
+  ![image](https://github.com/user-attachments/assets/33f5a325-0bac-40bb-bacd-14d193ab3ded)
 
 
+  Để sử dụng được thì ta tải Wireguard Client về máy tính -> Import tunnel bằng User01.còn vừa được tạo
+  ----
 
+  ![image](https://github.com/user-attachments/assets/9ede0da7-99a8-4a74-a27f-4d5700453e5d)
 
+  ![image](https://github.com/user-attachments/assets/85941e43-264c-47d9-b9ec-53df11733856)
 
+  Bấm Active để kiểm tra
+  
+  ## Step 8: Sử dụng tên miền tự động để khắc phục nhược điểm của địa chỉ IP công khai động
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/27f8f025-5fb9-482f-b18b-2b6ceea36ca3)
 
 
 
