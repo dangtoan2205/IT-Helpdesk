@@ -136,19 +136,79 @@ Nhập tài khoản quản trị:
 
   Tích Confirm -> Configure 
 
+  - Datasets -> Add Datasets
+ 
+  ![image](https://github.com/user-attachments/assets/dee5bd75-81cb-4700-9015-de02542128a9)
 
+  ![image](https://github.com/user-attachments/assets/d42f0e80-17f1-4ee8-8ffa-ee5ff436db28)
 
+  ![image](https://github.com/user-attachments/assets/08df16d4-7be0-4b42-9595-0223e5ac39fe)
 
+  - Shares -> Edit Filesystem ACL
 
+  ![image](https://github.com/user-attachments/assets/a72cf84a-d03e-4c97-aaca-69c796c0e3a8)
 
+  ![image](https://github.com/user-attachments/assets/8c0a80a6-4673-4b5f-9efc-5a1270803948)
 
+  Add Item 
 
+  ![image](https://github.com/user-attachments/assets/8b092e1e-b471-44de-850e-3826a699c4fe)
 
+  Chọn Modifi
 
+  ![image](https://github.com/user-attachments/assets/152b4588-25b3-4bbe-819b-2eb4970bc94c)
 
+  Chọn Save Access Control List
 
+  - Thiết lập tài khoản có quyền đọc và ghi đối tượng với thư mục được chia sẻ qua internet
 
+  ![image](https://github.com/user-attachments/assets/ff4861fd-232b-4e20-8fc2-d11560e706ff)
+ 
+  Chọn Network
 
+  ![image](https://github.com/user-attachments/assets/959b804d-f345-40b6-8acd-e678359e3d7d)
+
+  Edit
+
+  ![image](https://github.com/user-attachments/assets/ea9afd24-72ff-4d2c-ab9f-5ea38991153a)
+  
+  Thiết lập IP tĩnh cho máy chủ lưu trữ mạng. Đặt IP tĩnh để cấu hình chuyển tiếp cổng
+
+  ![image](https://github.com/user-attachments/assets/7da56992-aa2e-417c-bcce-fd6f52823000)
+
+  Skip
+
+  ![image](https://github.com/user-attachments/assets/1d4c6df0-2859-45dc-b669-acdedb461fae)
+
+  Test Changes
+
+  ![image](https://github.com/user-attachments/assets/40c5fe79-2dd3-4983-a96f-94beedc151de)
+
+  Tích chọn Confirm -> Test Chages
+
+  ![image](https://github.com/user-attachments/assets/d2759f63-b606-42b2-b26d-33ebaa24830b)
+
+  Save Changes -> Save
+
+  ![image](https://github.com/user-attachments/assets/8ad9e486-4467-4b62-b82a-529282e1c408)
+
+  Settings
+
+  ![image](https://github.com/user-attachments/assets/6ad21ff4-0fa4-4261-b33d-e75f7fa159c2)
+
+  ![image](https://github.com/user-attachments/assets/3408c047-1583-41a5-8b62-495708e9ec5d)
+
+  Save
+
+  ![image](https://github.com/user-attachments/assets/f4034bef-6277-4cf1-8045-fbb8633fa350)
+
+## Step 6: truy cập File serve bằng mạng cục bộ
+
+- Window + R : \\192.168.1.16
+
+- Đặng nhập tài khoản, mật khẩu
+
+![image](https://github.com/user-attachments/assets/2881e422-0c6a-4c08-af8d-fac0374a294a)
 
 
 
