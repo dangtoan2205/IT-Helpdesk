@@ -60,7 +60,9 @@ Pre-shared key: your_psk (nhớ mã này để dùng khi thiết lập trên má
 
 ![image](https://github.com/user-attachments/assets/3eb61a14-cd5f-4166-9e68-6c10ea653000)
 
+## Step 5: Tải DrayTek Smart VPN Client từ Google
 
+![image](https://github.com/user-attachments/assets/c82fa426-d173-46cc-bbd7-667fe8930088)
 
 
 -------------------
