@@ -17,7 +17,7 @@ passwd
 
 4/ Đặt địa chỉ IP tĩnh cho Ubnutu Server
 ```
-nano /etc/netplan/ --bấm tab--
+sudo nano /etc/netplan/
 ```
 VD: nano /etc/netplan/50-cloud-init.yaml
 
