@@ -44,7 +44,8 @@ Password: your_password (mật khẩu VPN)
 
 Nhấn OK để lưu cấu hình.
 
-![image](https://github.com/user-attachments/assets/98b8d980-618f-43f0-8ac2-a8606fa06594)
+![image](https://github.com/user-attachments/assets/7c9d5bdc-f47f-4b7a-ab34-2dc26fc39ae0)
+
 
 ## Step 4: Cấu hình L2TP/IPsec (tùy chọn khuyến nghị)
 1/ Vào VPN and Remote Access > IPsec General Setup.
