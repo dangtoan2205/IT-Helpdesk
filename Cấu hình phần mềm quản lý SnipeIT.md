@@ -130,6 +130,10 @@ pwd
 sudo ln -sf /home/ubuntu/snipeit   /var/www/html
 ```
 
+```
+cd /home/ubuntu/snipeit
+```
+
 ## Step 5: Install Dependencies via Composer
 
 ```
