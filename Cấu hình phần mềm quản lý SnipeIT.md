@@ -559,6 +559,90 @@ SCIM_STANDARDS_COMPLIANCE=false
 
 
 
+--------------
+Để kết nối tới MySQL trên server Ubuntu từ một máy khác (ví dụ như DBeaver), bạn cần thực hiện một số bước như sau:
+--------
+
+## 1. Kiểm tra MySQL lắng nghe trên tất cả các địa chỉ IP
+
+- Mở file cấu hình MySQL:
+```
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+- Tìm dòng sau:
+```
+bind-address = 127.0.0.1
+```
+- Sửa thành:
+```
+bind-address = 0.0.0.0
+```
+- Khởi động lại dịch vụ MySQL:
+```
+sudo systemctl restart mysql
+```
+## 2. Tạo tài khoản mới cho 'snipeit'@'%'
+```
+sudo mysql -u root -p
+
+CREATE USER 'snipeit'@'%' IDENTIFIED BY 'Adminlocal123a@';
+
+GRANT ALL PRIVILEGES ON snipeit_db.* TO 'snipeit'@'%';
+
+FLUSH PRIVILEGES;
+```
+
+Kiểm tra lại
+```
+SELECT host, user FROM mysql.user;
+```
+
+## 3. Mở port MySQL trên tường lửa
+```
+sudo ufw allow 3306/tcp
+
+sudo ufw status
+```
+
+## 4. Kiểm tra kết nối
+```
+netstat -tlpn | grep 3306
+```
+
+
+---
+Kiểm tra kết nối mạng từ máy cục bộ
+-----
+
+
+## Bật Telnet Client trên Windows
+- Mặc định, telnet không được bật trên Windows. Bạn cần bật tính năng này:
+    - Nhấn `Windows + R`, nhập `optionalfeatures`, và nhấn `Enter`.
+    - Trong cửa sổ "Windows Features", cuộn xuống và tìm `Telnet Client`.
+    - Tích vào ô `Telnet Client` và nhấn `OK`.
+    - Chờ quá trình cài đặt hoàn tất.
+```
+telnet 192.168.80.81 3306
+```
+
+## Kết nối DB của 192.168.80.81 
+
+1/ `Mở DBeaver.`
+
+2/ Trong danh sách kết nối, chọn kết nối MySQL của bạn, nhấp chuột phải và chọn `Edit Connection`.
+
+3/ Chuyển đến tab `Driver Settings.`
+
+4/ Trong phần `URL Options`, thêm dòng sau vào cuối URL:
+```
+?allowPublicKeyRetrieval=true
+```
+
+Ví dụ URL đầy đủ:
+```
+jdbc:mysql://192.168.80.81:3306/snipeit_db?allowPublicKeyRetrieval=true&useSSL=false
+```
+
 
 
 
