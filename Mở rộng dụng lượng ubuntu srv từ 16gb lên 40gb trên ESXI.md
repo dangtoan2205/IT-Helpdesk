@@ -1,5 +1,19 @@
 ## 1. Thêm dung lượng trên ESXI
 
+1/ Truy cập ESXI
+
+2/ Tắt máy ảo ubuntu server đang chạy
+
+3/ Vào Edit settings
+
+4/ Thêm dung lượng cho máy ảo
+
+![image](https://github.com/user-attachments/assets/2c4dfb84-6baf-491f-a131-56e09566c4a9)
+
+-> Save
+
+5/ Khởi động lại ubuntu server
+
 ## 2. Mở rộng dung lượng bộ nhớ trên Ubuntu Server
 
 Kiểm tra bằng câu lệnh
