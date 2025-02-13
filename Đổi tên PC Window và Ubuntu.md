@@ -5,3 +5,16 @@
 3/ Đổi tên bấm Apply -> OK </br>
 ![image](https://github.com/user-attachments/assets/643c41c7-f191-49e3-aa57-a1485f633e67)
 -------
+
+
+
+Đổi host name Ubuntu
+----
+
+```
+sudo nano etc/hostname
+```
+
+```
+sudo reboot
+```
