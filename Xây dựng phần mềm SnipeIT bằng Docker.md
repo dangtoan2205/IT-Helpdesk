@@ -1,20 +1,15 @@
 Xây dựng phần mềm SnipeIT bằng Docker
 ------------
 
+## Step 1: Pull docker image
 
-
-
-
-
-
-
-
-
-
-
-
+```
+docker pull snipe/snipe-it
+```
 
 -----------
+
+## Step 2: Create file docker-compose.yml
 
 ```
 docker-compose.yml
@@ -62,6 +57,7 @@ services:
 
 ------------
 
+## Step 3: Create file snipeenv.docker
 
 ```
 snipeenv.docker
@@ -245,6 +241,7 @@ LDAP_TIME_LIM=600
 
 ------------
 
+## Step 4: Run
 
 ```
 docker-compose up -d
