@@ -14,7 +14,7 @@ Xây dựng phần mềm SnipeIT bằng Docker
 
 
 
-
+-----------
 
 ```
 docker-compose.yml
@@ -240,4 +240,12 @@ APP_FORCE_TLS=false
 GOOGLE_MAPS_API=
 LDAP_MEM_LIM=500M
 LDAP_TIME_LIM=600
+```
+
+
+------------
+
+
+```
+docker-compose up -d
 ```
