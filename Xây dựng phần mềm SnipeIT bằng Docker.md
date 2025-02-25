@@ -25,6 +25,7 @@ volumes:
 services:
   app:
     image: snipe/snipe-it:${APP_VERSION:-v7.0.11}
+    container_name: seta
     restart: unless-stopped
     volumes:
       - storage:/var/lib/snipeit
@@ -39,6 +40,7 @@ services:
 
   db:
     image: mariadb:11.5.2
+    container_name: databases
     restart: unless-stopped
     volumes:
       - db_data:/var/lib/mysql
