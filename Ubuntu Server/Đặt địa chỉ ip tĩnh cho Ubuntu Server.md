@@ -38,6 +38,24 @@ network:
 
 ```
 
+hoặc
+
+```
+network:
+  version: 2
+  ethernets:
+    ens33:
+      dhcp4: no
+      addresses: 
+        - 192.168.80.49/23
+      routes:
+        - to: default
+          via: 192.168.80.1
+      nameservers:
+        addresses: [192.168.80.10, 8.8.8.8, 8.8.4.4]
+
+```
+
 5/ Lưu lại cấu hình
 ```
 sudo netplan apply
