@@ -75,5 +75,27 @@ sudo systemctl status openvswitch-switch
 sudo netplan apply
 ```
 
+------------
+Nếu bị lỗi không phân giải được tên miền DNS
+
+```
+sudo nano /etc/resolv.conf
+```
+
+Thêm dòng sau (nếu chưa có):
+
+```
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+```
+
+Lưu lại, thử ping:
+
+```
+ping google.com
+ping 8.8.8.8
+
+```
+
 
 
