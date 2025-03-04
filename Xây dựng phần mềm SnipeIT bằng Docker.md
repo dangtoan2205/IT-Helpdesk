@@ -103,6 +103,10 @@ snipeenv_seta.docker
 ```
 
 ```
+snipeenv_seta.docker
+```
+
+```
 APP_VERSION=v6.4.1
 APP_PORT=6666
 APP_ENV=production
@@ -155,6 +159,10 @@ APP_CIPHER=AES-256-CBC
 ## Step 4: Create file snipeenv_blue.docker
 
 ```
+snipeenv_blue.docker
+```
+
+```
 APP_VERSION=v6.4.1
 APP_PORT=7777
 APP_ENV=production
@@ -204,6 +212,10 @@ APP_CIPHER=AES-256-CBC
 ```
 
 ## Step 5: Create file snipeenv_ai.docker
+
+```
+snipeenv_ai.docker
+```
 
 ```
 APP_VERSION=v6.4.1
