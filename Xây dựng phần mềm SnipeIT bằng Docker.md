@@ -268,10 +268,54 @@ APP_CIPHER=AES-256-CBC
 ## Step 6: Run
 
 ```
+sudo -i
+```
+
+```
+cd /home/ubuntu/SnipeIT
 docker-compose up -d
 ```
 
+```
+docker exec -it mariadb-databases bash
+```
 
+```
+apt-get update && apt-get install -y mysql-client
+```
+
+```
+mysql -u root -pAdminlocal123a@
+```
+
+```
+CREATE DATABASE seta;
+CREATE DATABASE blue;
+CREATE DATABASE ai;
+
+CREATE USER 'seta'@'%' IDENTIFIED BY 'Adminlocal123a@';
+GRANT ALL PRIVILEGES ON seta.* TO 'seta'@'%';
+
+CREATE USER 'blue'@'%' IDENTIFIED BY 'Adminlocal123a@';
+GRANT ALL PRIVILEGES ON blue.* TO 'blue'@'%';
+
+CREATE USER 'ai'@'%' IDENTIFIED BY 'Adminlocal123a@';
+GRANT ALL PRIVILEGES ON ai.* TO 'ai'@'%';
+
+FLUSH PRIVILEGES;
+```
+
+```
+GRANT ALL PRIVILEGES ON seta.* TO 'seta'@'%';
+GRANT ALL PRIVILEGES ON blue.* TO 'blue'@'%';
+GRANT ALL PRIVILEGES ON ai.* TO 'ai'@'%';
+FLUSH PRIVILEGES;
+```
+
+```
+docker-compose down
+docker-compose up -d
+```
 
 
 
