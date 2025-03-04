@@ -12,7 +12,7 @@ docker pull toandn2205/snipeit
 ## Step 2: Create file docker-compose.yml
 
 ```
-docker-compose.yml
+nano docker-compose.yml
 ```
 
 ```
@@ -99,7 +99,7 @@ services:
 ## Step 3: Create file snipeenv_seta.docker
 
 ```
-snipeenv_seta.docker
+nano snipeenv_seta.docker
 ```
 
 ```
@@ -155,7 +155,7 @@ APP_CIPHER=AES-256-CBC
 ## Step 4: Create file snipeenv_blue.docker
 
 ```
-snipeenv_blue.docker
+nano snipeenv_blue.docker
 ```
 
 ```
@@ -210,7 +210,7 @@ APP_CIPHER=AES-256-CBC
 ## Step 5: Create file snipeenv_ai.docker
 
 ```
-snipeenv_ai.docker
+nano snipeenv_ai.docker
 ```
 
 ```
