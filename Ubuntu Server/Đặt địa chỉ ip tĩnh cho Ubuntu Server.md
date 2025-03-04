@@ -66,8 +66,6 @@ sudo netplan apply
 Fix nên cài openvswitch-switch trước
 -----------
 
-![image](https://github.com/user-attachments/assets/ca0d36aa-1746-4170-898f-1e4f586f5be8)
-
 ```
 sudo chmod 600 /etc/netplan/00-installer-config.yaml
 ```
