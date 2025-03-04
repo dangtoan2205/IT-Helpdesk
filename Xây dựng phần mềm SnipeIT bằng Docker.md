@@ -4,7 +4,7 @@ Xây dựng phần mềm SnipeIT bằng Docker
 ## Step 1: Pull docker image
 
 ```
-docker pull snipe/snipe-it
+docker pull toandn2205/snipeit
 ```
 
 -----------
@@ -16,110 +16,113 @@ docker-compose.yml
 ```
 
 ```
-# Compose file for production.
+version: '3.8'
 
 volumes:
   db_data:
-  storage:
+  storage_seta:
+  storage_blue:
+  storage_ai:
+
+networks:
+  snipeit_net:
 
 services:
-  app:
-    image: snipe/snipe-it:${APP_VERSION:-v7.0.11}
-    container_name: seta
-    restart: unless-stopped
-    volumes:
-      - storage:/var/lib/snipeit
-    ports:
-      - 8888:80
-    depends_on:
-      db:
-        condition: service_healthy
-        restart: true
-    env_file:
-      - snipeenv.docker
-
   db:
     image: mariadb:11.5.2
-    container_name: databases
+    container_name: mariadb-databases
     restart: unless-stopped
+    networks:
+      - snipeit_net
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: snipeit
-      MYSQL_USER: snipeit
-      MYSQL_PASSWORD: Adminlocal123a@
       MYSQL_ROOT_PASSWORD: Adminlocal123a@
     healthcheck:
-      # https://mariadb.com/kb/en/using-healthcheck-sh/#compose-file-example
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s
       timeout: 1s
       retries: 5
+
+  seta:
+    image: snipeit-build
+    container_name: snipeit-seta
+    restart: unless-stopped
+    networks:
+      - snipeit_net
+    volumes:
+      - storage_seta:/var/lib/snipeit
+    ports:
+      - "6666:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./snipeenv_seta.docker
+
+  blue:
+    image: snipeit-build
+    container_name: snipeit-blue
+    restart: unless-stopped
+    networks:
+      - snipeit_net
+    volumes:
+      - storage_blue:/var/lib/snipeit
+    ports:
+      - "7777:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./snipeenv_blue.docker
+
+  ai:
+    image: snipeit-build
+    container_name: snipeit-ai
+    restart: unless-stopped
+    networks:
+      - snipeit_net
+    volumes:
+      - storage_ai:/var/lib/snipeit
+    ports:
+      - "8888:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./snipeenv_ai.docker
+
 ```
 
 ------------
 
-## Step 3: Create file snipeenv.docker
+## Step 3: Create file snipeenv_seta.docker
 
 ```
-snipeenv.docker
+snipeenv_seta.docker
 ```
 
 ```
-# --------------------------------------------
-# REQUIRED: DOCKER SPECIFIC SETTINGS
-# --------------------------------------------
 APP_VERSION=v6.4.1
-APP_PORT=8888
-
-# --------------------------------------------
-# REQUIRED: BASIC APP SETTINGS
-# --------------------------------------------
+APP_PORT=6666
 APP_ENV=production
 APP_DEBUG=false
-# Please regenerate the APP_KEY value by calling `docker compose run --rm app php artisan key:generate --show`. Copy paste the value here
 APP_KEY=base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=
-APP_URL=http://192.168.81.31:8888
-# https://en.wikipedia.org/wiki/List_of_tz_database_time_zones - TZ identifier
+APP_URL=http://192.168.80.81:6666
 APP_TIMEZONE='UTC'
 APP_LOCALE=en-US
 MAX_RESULTS=500
 
-# --------------------------------------------
-# REQUIRED: UPLOADED FILE STORAGE SETTINGS
-# --------------------------------------------
 PRIVATE_FILESYSTEM_DISK=local
 PUBLIC_FILESYSTEM_DISK=local_public
 
-# --------------------------------------------
-# REQUIRED: DATABASE SETTINGS
-# --------------------------------------------
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT='3306'
-DB_DATABASE=snipeit
-DB_USERNAME=snipeit
+DB_DATABASE=seta
+DB_USERNAME=seta
 DB_PASSWORD=Adminlocal123a@
-MYSQL_ROOT_PASSWORD=Adminlocal123a@
-DB_PREFIX=null
-DB_DUMP_PATH='/usr/bin'
-DB_CHARSET=utf8mb4
-DB_COLLATION=utf8mb4_unicode_ci
 
-# --------------------------------------------
-# OPTIONAL: SSL DATABASE SETTINGS
-# --------------------------------------------
-DB_SSL=false
-DB_SSL_IS_PAAS=false
-DB_SSL_KEY_PATH=null
-DB_SSL_CERT_PATH=null
-DB_SSL_CA_PATH=null
-DB_SSL_CIPHER=null
-DB_SSL_VERIFY_SERVER=null
-
-# --------------------------------------------
-# REQUIRED: OUTGOING MAIL SERVER SETTINGS
-# --------------------------------------------
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
 MAIL_PORT=1025
@@ -130,124 +133,136 @@ MAIL_FROM_ADDR=you@example.com
 MAIL_FROM_NAME='Snipe-IT'
 MAIL_REPLYTO_ADDR=you@example.com
 MAIL_REPLYTO_NAME='Snipe-IT'
-MAIL_AUTO_EMBED_METHOD='attachment'
 
-# --------------------------------------------
-# REQUIRED: DATA PROTECTION
-# --------------------------------------------
 ALLOW_BACKUP_DELETE=false
 ALLOW_DATA_PURGE=false
-
-# --------------------------------------------
-# REQUIRED: IMAGE LIBRARY
-# This should be gd or imagick
-# --------------------------------------------
 IMAGE_LIB=gd
 
-# --------------------------------------------
-# OPTIONAL: BACKUP SETTINGS
-# --------------------------------------------
-MAIL_BACKUP_NOTIFICATION_DRIVER=null
-MAIL_BACKUP_NOTIFICATION_ADDRESS=null
-BACKUP_ENV=true
-
-# --------------------------------------------
-# OPTIONAL: SESSION SETTINGS
-# --------------------------------------------
 SESSION_LIFETIME=12000
 EXPIRE_ON_CLOSE=false
 ENCRYPT=false
 COOKIE_NAME=snipeit_session
-COOKIE_DOMAIN=null
 SECURE_COOKIES=false
 API_TOKEN_EXPIRATION_YEARS=40
 
-# --------------------------------------------
-# OPTIONAL: SECURITY HEADER SETTINGS
-# --------------------------------------------
-#APP_TRUSTED_PROXIES=192.168.1.1,10.0.0.1,172.16.0.0/12
-ALLOW_IFRAMING=false
-REFERRER_POLICY=same-origin
-ENABLE_CSP=false
-CORS_ALLOWED_ORIGINS=null
-ENABLE_HSTS=false
-
-# --------------------------------------------
-# OPTIONAL: CACHE SETTINGS
-# --------------------------------------------
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-QUEUE_DRIVER=sync
-CACHE_PREFIX=snipeit
-
-# --------------------------------------------
-# OPTIONAL: REDIS SETTINGS
-# --------------------------------------------
-REDIS_HOST=null
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-# --------------------------------------------
-# OPTIONAL: MEMCACHED SETTINGS
-# --------------------------------------------
-MEMCACHED_HOST=null
-MEMCACHED_PORT=null
-
-# --------------------------------------------
-# OPTIONAL: PUBLIC S3 Settings
-# --------------------------------------------
-PUBLIC_AWS_SECRET_ACCESS_KEY=null
-PUBLIC_AWS_ACCESS_KEY_ID=null
-PUBLIC_AWS_DEFAULT_REGION=null
-PUBLIC_AWS_BUCKET=null
-PUBLIC_AWS_URL=null
-PUBLIC_AWS_BUCKET_ROOT=null
-
-# --------------------------------------------
-# OPTIONAL: PRIVATE S3 Settings
-# --------------------------------------------
-PRIVATE_AWS_ACCESS_KEY_ID=null
-PRIVATE_AWS_SECRET_ACCESS_KEY=null
-PRIVATE_AWS_DEFAULT_REGION=null
-PRIVATE_AWS_BUCKET=null
-PRIVATE_AWS_URL=null
-PRIVATE_AWS_BUCKET_ROOT=null
-
-# --------------------------------------------
-# OPTIONAL: AWS Settings
-# --------------------------------------------
-AWS_ACCESS_KEY_ID=null
-AWS_SECRET_ACCESS_KEY=null
-AWS_DEFAULT_REGION=null
-
-# --------------------------------------------
-# OPTIONAL: LOGIN THROTTLING
-# --------------------------------------------
-LOGIN_MAX_ATTEMPTS=5
-LOGIN_LOCKOUT_DURATION=60
-RESET_PASSWORD_LINK_EXPIRES=900
-
-# --------------------------------------------
-# OPTIONAL: MISC
-# --------------------------------------------
 LOG_CHANNEL=stderr
 LOG_MAX_DAYS=10
 APP_LOCKED=false
 APP_CIPHER=AES-256-CBC
-APP_FORCE_TLS=false
-GOOGLE_MAPS_API=
-LDAP_MEM_LIM=500M
-LDAP_TIME_LIM=600
+```
+
+
+## Step 4: Create file snipeenv_blue.docker
+
+```
+APP_VERSION=v6.4.1
+APP_PORT=7777
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=
+APP_URL=http://192.168.80.81:7777
+APP_TIMEZONE='UTC'
+APP_LOCALE=en-US
+MAX_RESULTS=500
+
+PRIVATE_FILESYSTEM_DISK=local
+PUBLIC_FILESYSTEM_DISK=local_public
+
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT='3306'
+DB_DATABASE=blue
+DB_USERNAME=blue
+DB_PASSWORD=Adminlocal123a@
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_TLS_VERIFY_PEER=true
+MAIL_FROM_ADDR=you@example.com
+MAIL_FROM_NAME='Snipe-IT'
+MAIL_REPLYTO_ADDR=you@example.com
+MAIL_REPLYTO_NAME='Snipe-IT'
+
+ALLOW_BACKUP_DELETE=false
+ALLOW_DATA_PURGE=false
+IMAGE_LIB=gd
+
+SESSION_LIFETIME=12000
+EXPIRE_ON_CLOSE=false
+ENCRYPT=false
+COOKIE_NAME=snipeit_session
+SECURE_COOKIES=false
+API_TOKEN_EXPIRATION_YEARS=40
+
+LOG_CHANNEL=stderr
+LOG_MAX_DAYS=10
+APP_LOCKED=false
+APP_CIPHER=AES-256-CBC
+```
+
+## Step 5: Create file snipeenv_ai.docker
+
+```
+APP_VERSION=v6.4.1
+APP_PORT=8888
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ=
+APP_URL=http://192.168.80.81:8888
+APP_TIMEZONE='UTC'
+APP_LOCALE=en-US
+MAX_RESULTS=500
+
+PRIVATE_FILESYSTEM_DISK=local
+PUBLIC_FILESYSTEM_DISK=local_public
+
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT='3306'
+DB_DATABASE=ai
+DB_USERNAME=ai
+DB_PASSWORD=Adminlocal123a@
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_TLS_VERIFY_PEER=true
+MAIL_FROM_ADDR=you@example.com
+MAIL_FROM_NAME='Snipe-IT'
+MAIL_REPLYTO_ADDR=you@example.com
+MAIL_REPLYTO_NAME='Snipe-IT'
+
+ALLOW_BACKUP_DELETE=false
+ALLOW_DATA_PURGE=false
+IMAGE_LIB=gd
+
+SESSION_LIFETIME=12000
+EXPIRE_ON_CLOSE=false
+ENCRYPT=false
+COOKIE_NAME=snipeit_session
+SECURE_COOKIES=false
+API_TOKEN_EXPIRATION_YEARS=40
+
+LOG_CHANNEL=stderr
+LOG_MAX_DAYS=10
+APP_LOCKED=false
+APP_CIPHER=AES-256-CBC
 ```
 
 
 ------------
 
-## Step 4: Run
+## Step 6: Run
 
 ```
 docker-compose up -d
 ```
+
 
 
 
@@ -264,7 +279,7 @@ Dockerfile
 ```
 
 ```
-FROM ubuntu:24.04
+FROM ubuntu:22.04
 LABEL maintainer="Brady Wetherington <bwetherington@grokability.com>"
 
 # No need to add `apt-get clean` here, reference:
@@ -280,16 +295,16 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
 apt-utils \
 apache2 \
 apache2-bin \
-libapache2-mod-php8.3 \
-php8.3-curl \
-php8.3-ldap \
-php8.3-mysql \
-php8.3-gd \
-php8.3-xml \
-php8.3-mbstring \
-php8.3-zip \
-php8.3-bcmath \
-php8.3-redis \
+libapache2-mod-php8.1 \
+php8.1-curl \
+php8.1-ldap \
+php8.1-mysql \
+php8.1-gd \
+php8.1-xml \
+php8.1-mbstring \
+php8.1-zip \
+php8.1-bcmath \
+php8.1-redis \
 php-memcached \
 patch \
 curl \
@@ -306,7 +321,8 @@ autoconf \
 libc-dev \
 libldap-common \
 pkg-config \
-php8.3-dev \
+libmcrypt-dev \
+php8.1-dev \
 ca-certificates \
 unzip \
 dnsutils \
@@ -316,13 +332,18 @@ dnsutils \
 RUN curl -L -O https://github.com/pear/pearweb_phars/raw/master/go-pear.phar
 RUN php go-pear.phar
 
+RUN pecl install mcrypt
+
+RUN bash -c "echo extension=/usr/lib/php/20210902/mcrypt.so > /etc/php/8.1/mods-available/mcrypt.ini"
+
+RUN phpenmod mcrypt
 RUN phpenmod gd
 RUN phpenmod bcmath
 
-RUN sed -i 's/variables_order = .*/variables_order = "EGPCS"/' /etc/php/8.3/apache2/php.ini
-RUN sed -i 's/variables_order = .*/variables_order = "EGPCS"/' /etc/php/8.3/cli/php.ini
+RUN sed -i 's/variables_order = .*/variables_order = "EGPCS"/' /etc/php/8.1/apache2/php.ini
+RUN sed -i 's/variables_order = .*/variables_order = "EGPCS"/' /etc/php/8.1/cli/php.ini
 
-RUN useradd -m --uid 10000 --gid 50 docker
+RUN useradd -m --uid 1000 --gid 50 docker
 
 RUN echo export APACHE_RUN_USER=docker >> /etc/apache2/envvars
 RUN echo export APACHE_RUN_GROUP=staff >> /etc/apache2/envvars
