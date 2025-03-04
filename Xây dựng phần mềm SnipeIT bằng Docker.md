@@ -103,10 +103,6 @@ snipeenv_seta.docker
 ```
 
 ```
-snipeenv_seta.docker
-```
-
-```
 APP_VERSION=v6.4.1
 APP_PORT=6666
 APP_ENV=production
