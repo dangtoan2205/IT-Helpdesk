@@ -44,7 +44,7 @@ hoặc
 network:
   version: 2
   ethernets:
-    ens33:
+    enp5s0:
       dhcp4: no
       addresses: 
         - 192.168.80.49/23
