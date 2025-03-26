@@ -257,27 +257,56 @@ Tích chọn Confirm -> Continue
 
 ## Thêm tài khoản mới
 
+![image](https://github.com/user-attachments/assets/c0dac20e-16dc-4ed9-a5c7-d8c206df88cf)
+
+Credentials -> Users -> Add
+
+![image](https://github.com/user-attachments/assets/2112f7a0-8308-432c-85bd-f831bcf4bfb2)
+
+![image](https://github.com/user-attachments/assets/34c3fc2f-744f-4e8f-8cdd-cd4d09d3b9a7)
 
 
+## Tạo thư mục chia sẻ mới
 
+![image](https://github.com/user-attachments/assets/6532bbcb-4011-4d3d-8c7b-576770237c16)
 
+Datasets -> Add Dataset
 
+![image](https://github.com/user-attachments/assets/3a559b62-155d-4d81-bb21-f787d8b4fc81)
 
+![image](https://github.com/user-attachments/assets/fdb5357c-0b7d-4364-8e82-b67589e81884)
 
+![image](https://github.com/user-attachments/assets/2215ae1b-76e7-482f-b6d0-90dabddbf3a3)
 
+![image](https://github.com/user-attachments/assets/a4d22ec5-0a78-4b87-95ca-1a5921ad0694)
 
+![image](https://github.com/user-attachments/assets/9402d67e-998a-48d5-aa92-31f4de3fb96d)
 
+![image](https://github.com/user-attachments/assets/ae765f5e-aac5-4612-abe4-7a5313c8a1dd)
 
+![image](https://github.com/user-attachments/assets/bebf4753-a6fb-4392-aa4e-4d727a24a9d1)
 
+## Thiết lập địa chỉ IP tĩnh
 
+![image](https://github.com/user-attachments/assets/e63d539b-d9dc-4703-89f3-ffd59744079e)
 
+Networ -> Edit
 
+![image](https://github.com/user-attachments/assets/79a01a91-8348-4a59-8793-605b93bacd62)
 
+Bỏ chọn DHCP
 
+Bỏ chọn Autoconfigure IPv6
 
+Add Alises
 
+![image](https://github.com/user-attachments/assets/1515c249-34df-433e-9067-d16c1b905f1d)
 
+![image](https://github.com/user-attachments/assets/56e86f43-fa96-4c4d-a972-a4f8552bc8fc)
 
+Kiểm tra kết nối
+
+![image](https://github.com/user-attachments/assets/71915c20-6cbe-443d-b353-aac61e737dd1)
 
 
 
