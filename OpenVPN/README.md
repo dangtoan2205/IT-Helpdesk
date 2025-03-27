@@ -53,6 +53,7 @@ Thay `your-server-ip` bằng địa chỉ IP của server.
 
 Mở cổng trên firewall nếu cần
 ---------------
+---------------
 
 Nếu server có firewall (`ufw`), bạn cần mở cổng `1194` để cho phép kết nối VPN:
 
