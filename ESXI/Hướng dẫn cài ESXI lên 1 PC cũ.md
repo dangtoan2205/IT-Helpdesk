@@ -58,4 +58,16 @@ Kết quả
 - Chọn USB Boot: UEFI: SanDisk Cruzer Blade 1.26, Partition 1 (7633MB)
 
 
+---------
+Kiểm tra card mạng trên PC cài WinPE
+------------
+
+
+1/ Win + R > CMD
+
+2/ Nhập 
+
+```
+devmgmt.msc
+```
 
