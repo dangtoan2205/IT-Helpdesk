@@ -4,7 +4,10 @@
 - Truy cập IP
 - Đăng nhập
 - Bấm chọn "Tải xuống Plug-in"
-  
+
+![image](https://github.com/user-attachments/assets/eb8e94ec-7f5f-414c-9b49-e9ce2479fa03)
+
+
 -> Chờ tải về xong thì bấm cài đặt
 
 
