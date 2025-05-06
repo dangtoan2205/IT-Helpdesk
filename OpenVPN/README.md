@@ -16,6 +16,8 @@ sudo ./openvpn-install.sh
 
 ## 4. Xác minh thông tin đầu vào trong script
 
+![image](https://github.com/user-attachments/assets/85aa5334-901d-436c-bb03-1fe7845f96e4)
+
 - IP Public: Script tự động nhận diện IP public của bạn là 113.190.252.197.
 
 - Chọn giao thức: Bạn chọn UDP (1), đây là lựa chọn tốt vì UDP thường nhanh hơn TCP.
@@ -68,6 +70,7 @@ Nếu sử dụng `iptables`, bạn cần thêm quy tắc NAT:
 sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 sudo iptables-save > /etc/iptables.rules
 ```
+
 
 ------------------
 Bước quan trọng
