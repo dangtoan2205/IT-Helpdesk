@@ -69,8 +69,41 @@ sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 sudo iptables-save > /etc/iptables.rules
 ```
 
+------------------
+Bước quan trọng
+------------------
+
+Bỏ tích các thông tin sau ở Remote Access Control
+
+VPN and Remote Access >> Remote Access Control
+
+![image](https://github.com/user-attachments/assets/43864693-97ee-442a-8509-6397fb260908)
+
+VPN and Remote Access >> OpenVPN
+
+![image](https://github.com/user-attachments/assets/782821fd-3604-45cd-8f60-007a5f0665b5)
+
+VPN and Remote Access >> Remote Dial-in User
+
+![image](https://github.com/user-attachments/assets/45313656-1c11-40e8-b27c-84a099f75814)
 
 
+Mở NAT Port trên Route Draytek Vigor 2962
+
+NAT > Open Ports > Chọn 1
+
+- Tích chọn "Enable Open Ports"
+- Comment: NAT port 1194
+- WAN Interface: Lựa chọn dựa trên cổng WAN nào kết nối với Internet
+- Source IP: Any
+- Private IP: 192.168.60.132 (Là địa chỉ IP cài Server OpenVPN)
+
+- Protocol : UDP
+- Start Port : 1194
+- End Port : 1194
+
+
+![image](https://github.com/user-attachments/assets/dfbf58db-5594-417a-9153-8c3814e2be7b)
 
 
 
