@@ -22,8 +22,6 @@ Hướng dẫn cấu hình VPN trên Router Draytek Vigor 2962
 ```
 3/ Nhấn OK để lưu cấu hình.
 
-![image](https://github.com/user-attachments/assets/0494ecf7-01c8-498e-ba14-c173c346460b)
-
 ## Step 3: Tạo tài khoản VPN cho người dùng
 
 1/ Vào VPN and Remote Access > Remote Dial-in User.
@@ -44,9 +42,6 @@ Password: your_password (mật khẩu VPN)
 
 Nhấn OK để lưu cấu hình.
 
-![image](https://github.com/user-attachments/assets/7c9d5bdc-f47f-4b7a-ab34-2dc26fc39ae0)
-
-
 ## Step 4: Cấu hình L2TP/IPsec (tùy chọn khuyến nghị)
 1/ Vào VPN and Remote Access > IPsec General Setup.
 
@@ -57,14 +52,7 @@ Pre-shared key: your_psk (nhớ mã này để dùng khi thiết lập trên má
 
 3/ Nhấn OK để lưu cấu hình.
 
-![image](https://github.com/user-attachments/assets/3a07fe89-567f-4684-925d-bcdeeadd8391)
-
-![image](https://github.com/user-attachments/assets/3eb61a14-cd5f-4166-9e68-6c10ea653000)
-
 ## Step 5: Tải DrayTek Smart VPN Client từ Google
-
-![image](https://github.com/user-attachments/assets/c82fa426-d173-46cc-bbd7-667fe8930088)
-
 
 -------------------
 Cấu hình OpenVPN trên DrayTek Vigor 2962
@@ -102,8 +90,6 @@ Allowed Dial-in Type: ✔️ OpenVPN
 
 2/ Cấu hình các thông số sau:
 
-![image](https://github.com/user-attachments/assets/63841d74-979a-46d8-b881-c6992199f089)
-
 3/ Nhấn OK để lưu cấu hình.
 
 ## Bước 4: Tải file cấu hình OpenVPN (.ovpn)
@@ -121,10 +107,8 @@ Khắc phục sự cố OpenVPN
  - Đảm bảo cổng 1194 được mở trên router.
  - Nếu cần, vào NAT > Port Redirection để tạo rule mở cổng:
 
-![image](https://github.com/user-attachments/assets/15ae1878-867f-4781-824b-3d03397ab5c9)
 
 2/ Kiểm tra Firewall của router
 
 Vào Firewall > General Setup và đảm bảo dịch vụ OpenVPN không bị chặn.
 
-![image](https://github.com/user-attachments/assets/ca3e78a1-3e83-42a3-b415-8cbad627dc84)
