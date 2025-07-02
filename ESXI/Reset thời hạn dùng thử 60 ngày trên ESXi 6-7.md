@@ -1,5 +1,11 @@
-Reset thời hạn dùng thử 60 ngày trên ESXi 6 / 7 để sử dụng mãi mãi
---------
+# Reset thời hạn dùng thử 60 ngày trên ESXi 6 / 7 để sử dụng mãi mãi
+
+Lỗi bạn gặp phải:
+
+**Failed to power on virtual machine VPN. License key has expired.**
+
+nghĩa là bản quyền (license) của VMware ESXi đã hết hạn, và vì vậy bạn không thể bật máy ảo cho đến khi xử lý vấn đề này.
+
 
 ![image](https://github.com/user-attachments/assets/32086070-4ae5-4af5-92d6-a398257dc47f)
 
