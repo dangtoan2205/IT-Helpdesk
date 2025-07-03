@@ -2,6 +2,11 @@
 
 ## 2/ Cài docker lên server
 
+```bash
+sudo apt install docker
+sudo snap install docker
+```
+
 ## 3/ Tạo một docker compose để pull file image của MinIO về máy
 ```bash
 mkdir ~/minio
