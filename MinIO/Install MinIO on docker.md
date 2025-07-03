@@ -41,7 +41,7 @@ volumes:
 ## 5/ Chạy docker
 
 ```bash
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
 ## 6/ Truy cập MinIO
