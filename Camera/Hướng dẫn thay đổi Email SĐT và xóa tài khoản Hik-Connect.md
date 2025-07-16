@@ -22,7 +22,7 @@ HƯỚNG DẪN THAY ĐỔI EMAIL, SỐ ĐIỆN THOẠI VÀ XÓA TÀI KHOẢN HIK
 
 <img width="1210" height="809" alt="image" src="https://github.com/user-attachments/assets/bef4cc40-8688-4c45-9cc5-dbd0a0f5450f" />
 
-## Các bước đổi số điện thoại, Delete Account tương tự
+## 2. Các bước đổi số điện thoại, Delete Account tương tự
 
 
 
