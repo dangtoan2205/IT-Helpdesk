@@ -69,13 +69,13 @@ interface e0/3
 
 ```bash
 interface e0/0
- switchport trunk encapsulation dot1q
- switchport mode trunk
- switchport trunk allowed vlan 10,20,30,40
+ description Uplink to pfSense (LAN 192.168.10.254/24)
+ switchport mode access
+ switchport access vlan 10
  no shut
 ```
 
-6) Cấu hình Default route cho SWL3
+6) Cấu hình Default route cho SWL3 về pfSense
 
 ```bash
 conf t
