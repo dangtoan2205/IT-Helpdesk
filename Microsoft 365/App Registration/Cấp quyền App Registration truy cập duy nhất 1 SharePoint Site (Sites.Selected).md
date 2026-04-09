@@ -1,5 +1,5 @@
 Cấp quyền App Registration truy cập duy nhất 1 SharePoint Site (Sites.Selected)
-----
+---
 
 # 🎯 Mục tiêu
 - App chỉ truy cập được 1 site cụ thể
@@ -7,19 +7,21 @@ Cấp quyền App Registration truy cập duy nhất 1 SharePoint Site (Sites.Se
 - Đảm bảo least privilege (bảo mật chuẩn Microsoft)
 
 # 📌 Thông tin áp dụng
-Thành phần	Giá trị
-App Name	PMO
-Client ID	f9a5f6e6-0e3a-411b-8738-6df0057c0f13
-Site URL	https://setainternationalvn.sharepoint.com/sites/PMO
-Permission	write
+
+| Thành phần  | Giá trị |
+|------------|--------|
+| App Name   | PMO |
+| Client ID  | f9a5f6e6-0e3a-411b-8738-6df0057c0f13 |
+| Site URL   | https://setainternationalvn.sharepoint.com/sites/PMO |
+| Permission | write |
 
 # ⚙️ PHẦN 1 — CẤU HÌNH APP REGISTRATION
----
+
 ## Bước 1: Vào App Registration
 
 👉 Microsoft Entra ID
 
-→ App registrations → chọn app PMO
+→ App registrations → chọn app **PMO**
 
 ## Bước 2: Cấp quyền API
 
@@ -43,32 +45,34 @@ Grant admin consent
 ```
 
 # ⚙️ PHẦN 2 — CẤP QUYỀN CHO SITE (QUAN TRỌNG NHẤT)
----
+
 ⚠️ Nếu không làm bước này → App sẽ KHÔNG truy cập được site
 
 # 🖥️ PHẦN 3 — THỰC HIỆN TRÊN POWERSHELL
 
-Bước 1: Cài Microsoft Graph module
+## Bước 1: Cài Microsoft Graph module
 ```
 Install-Module Microsoft.Graph -Scope CurrentUser -Force
 ```
 
-Bước 2: Đăng nhập
+## Bước 2: Đăng nhập
 ```
 Connect-MgGraph -Scopes "Sites.FullControl.All"
 ```
 👉 Login bằng tài khoản admin
+
+## Bước 3: Lấy Site ID
 ```
-Bước 3: Lấy Site ID
 $site = Get-MgSite -SiteId "setainternationalvn.sharepoint.com:/sites/PMO"
 $site.Id
 ```
+
 👉 Kết quả:
 ```
 setainternationalvn.sharepoint.com,5c894846-a76b-42cb-ac9a-79f8f4a49ef5,22175baa-8c73-4633-b9bb-a32f347c4b7e
 ```
 
-Bước 4: Gán quyền cho App
+## Bước 4: Gán quyền cho App
 ```
 $siteId   = "setainternationalvn.sharepoint.com,5c894846-a76b-42cb-ac9a-79f8f4a49ef5,22175baa-8c73-4633-b9bb-a32f347c4b7e"
 $clientId = "f9a5f6e6-0e3a-411b-8738-6df0057c0f13"
@@ -87,13 +91,15 @@ $params = @{
 New-MgSitePermission -SiteId $siteId -BodyParameter $params
 ```
 
-Bước 5: Kiểm tra kết quả
+## Bước 5: Kiểm tra kết quả
 ```
 Get-MgSitePermission -SiteId $siteId | Format-List
 ```
-👉 Kết quả mong đợi:
 
+👉 Kết quả mong đợi:
+```
 Roles : {write}
+```
 
 # ✅ PHẦN 4 — KẾT QUẢ
 
@@ -103,6 +109,7 @@ Sau khi hoàn thành:
 ```
 /sites/PMO
 ```
+
 ❌ Không truy cập được:
 
 - Site khác
@@ -128,11 +135,12 @@ Remove-MgSitePermission -SiteId $siteId -PermissionId "<PERMISSION_ID>"
 ```
 
 # ⚠️ PHẦN 7 — CÁC LỖI THƯỜNG GẶP
-Lỗi	Nguyên nhân
-403 Access Denied	chưa grant permission site
-Không truy cập được	chưa admin consent
-Không chạy PowerShell	chưa cài module
-Dùng sai URL	dùng link _layouts
+| Lỗi                   | Nguyên nhân                |
+|------------------------|----------------------------|
+| 403 Access Denied      | chưa grant permission site |
+| Không truy cập được    | chưa admin consent         |
+| Không chạy PowerShell  | chưa cài module            |
+| Dùng sai URL           | dùng link `_layouts`       |
 
 # 💡 PHẦN 8 — BEST PRACTICE
 
