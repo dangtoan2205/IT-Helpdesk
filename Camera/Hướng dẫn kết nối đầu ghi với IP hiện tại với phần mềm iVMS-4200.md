@@ -4,6 +4,11 @@ Chuẩn bị nhanh
 - Đầu ghi online cùng mạng (hoặc đã gán Hik-Connect nếu muốn xem từ xa).
 - Cổng thường dùng: SDK 8000, HTTP 80/88, RTSP 554 (giữ mặc định là được nếu không NAT).
 
+> Lưu ý khi cài ứng dụng Hikvision ban đầu
+
+<img width="720" height="548" alt="image" src="https://github.com/user-attachments/assets/058d4752-f8f2-486e-9de0-f73852cbc97a" />
+</br>
+
 ---------
 
 1, Đăng nhập với tài khoản và mật khẩu của Hik-Vision tự tạo vào iVMS-4200
