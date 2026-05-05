@@ -30,9 +30,7 @@ Do you want to proceed [y|n]? **y**
 
 ## Bước 2: Cấu hình quay PPPoE và gộp băng thông dùng Load balancing cho 2 nhà mạng VNPT và FPT
 
-1/ Interfaces → Assigments → Chọn WAN (vtnet0 là cổng WAN kết nối với model nhà mạng VNPT)
-
-
+1/ Interfaces → Assigments → Chọn **WAN** (vtnet0 là cổng WAN kết nối với model nhà mạng VNPT)
 
 Tích chọn: Enable interface
 
