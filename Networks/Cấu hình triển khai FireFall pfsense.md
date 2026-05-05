@@ -6,31 +6,29 @@ Nghiên cứu triển khai và cấu hình hệ thống mạng công ty chia vla
 Hình ảnh sơ đồ mạng
 
 
-## Bước 1: Cấu hình trên thiết bị pfsense
+# Bước 1: Cấu hình trên thiết bị pfsense
 
-1/ pfsense sẽ tự động nhận số card mạng đang cắm vào thiết bị
+## 1/ pfsense sẽ tự động nhận số card mạng đang cắm vào thiết bị
 
-2/  Nhập các thông số dựa theo card mạng
+## 2/  Nhập các thông số dựa theo card mạng
 
 Enter the WAN interface name or 'a' for auto-detection
 
 (vtnet0 vtnet1 vtnet2 vtnet3 or a): Chọn : **vtnet0** (ứng với wan VNPT)
-Enter the LAN interface name or 'a' for auto-detection
+- Enter the LAN interface name or 'a' for auto-detection
 
 NOTE: this enables full Firewalling/NAT mode.
+- (vtnet1 vtnet2 vtnet3 a or nothing if finished): Chọn : **vtnet2**(ứng với cổng lan có đầu ra mặc định truy cập vào pfsense là 192.168.1.1)
 
-(vtnet1 vtnet2 vtnet3 a or nothing if finished): Chọn : **vtnet2**(ứng với cổng lan có đầu ra mặc định truy cập vào pfsense là 192.168.1.1)
 Enter the Optional 1 interface name or 'a' for auto-detection
-
-(vtnet1 vtnet3 a or nothing if finished): (**Để trống bấm phím Enter**)
+- (vtnet1 vtnet3 a or nothing if finished): (**Để trống bấm phím Enter**)
 Do you want to proceed [y|n]? **y**
 
+## 3/ Sau khi cấu hình xong hãy truy cập vào PC cắm với cổng e2 với pfsense và set ip cho PC đó bất kì thuộc dải 192.168.1.0/24
 
-3/ Sau khi cấu hình xong hãy truy cập vào PC cắm với cổng e2 với pfsense và set ip cho PC đó bất kì thuộc dải 192.168.1.0/24
+# Bước 2: Cấu hình quay PPPoE và gộp băng thông dùng Load balancing cho 2 nhà mạng VNPT và FPT
 
-## Bước 2: Cấu hình quay PPPoE và gộp băng thông dùng Load balancing cho 2 nhà mạng VNPT và FPT
-
-1/ Interfaces → Assigments → Chọn **WAN** (vtnet0 là cổng WAN kết nối với model nhà mạng VNPT)
+## 1/ Interfaces → Assigments → Chọn **WAN** (vtnet0 là cổng WAN kết nối với model nhà mạng VNPT)
 
 Tích chọn: Enable interface
 
@@ -45,18 +43,11 @@ Tích chọn:
 Block private networks and loopback addresses
 Block bogon networks
 
-
 Bấm → Save → Apply Changes
 
-
-
-2/ Interfaces → Assigments 
-
-
+## 2/ Interfaces → Assigments 
 
 Tại Available network port: chọn vtnet1 (vtnet1 là cổng WAN kết nối với model nhà mạng FPT) → bấm Add
-
-
 
 Tích chọn: Enable interface
 
@@ -71,22 +62,13 @@ Tích chọn:
 Block private networks and loopback addresses
 Block bogon networks
 
-
 Bấm → Save → Apply Changes
 
-
-
-3/ Gộp nhà mạng VNPT và FPT vào group (Việc gộp này bao gồm cả khi 1 nhà mạng bị down thì chuyển sang nhà mạng còn lại để tiếp tục hoạt động)
-
-
+## 3/ Gộp nhà mạng VNPT và FPT vào group (Việc gộp này bao gồm cả khi 1 nhà mạng bị down thì chuyển sang nhà mạng còn lại để tiếp tục hoạt động)
 
 Kiểm tra xem hiện tại đã nhập đúng các tài khoản PPPoE của các nhà mạng và đã hoạt động hay chưa?
 
-
-
 Status → Gateways 
-
-
 
 Nếu cả 2 đã hiển thị trạng thái Status → Online rồi thì đã đúng,
 Nếu cả 2 hiển thị trạng thái Status → Pending thì kiểm tra xem phần Monitor có bị trùng IP hay không?
