@@ -40,8 +40,8 @@ Nhập thông tin Username và Password
 
 Tích chọn:
 
-Block private networks and loopback addresses
-Block bogon networks
+- Block private networks and loopback addresses
+- Block bogon networks
 
 Bấm → Save → Apply Changes
 
