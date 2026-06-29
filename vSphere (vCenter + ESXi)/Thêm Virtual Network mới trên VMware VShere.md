@@ -39,9 +39,10 @@ vSwitch0 -> Next
 
 Ví dụ: Tạo VLAN 282
 
-|| Thông số      || Giá trị  ||
-|| Network Lable || VLAN-282 ||
-|| VLAN ID       || 282      ||
+| Thông số  | Giá trị  |
+| --- | --- |
+| Network Lable | VLAN-282 |
+| VLAN ID       | 282      |
 
 Sau đó chọn: Next -> Finish
 
