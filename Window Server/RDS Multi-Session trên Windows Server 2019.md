@@ -3,7 +3,7 @@ How to config multi session Remote Desktop for Windows Server
 
 ## Bước 1: Tạo tài khoản và cho phép quyền truy cập Remote Desktop
 
-- TNhấp chuột phải vào nút **Start** sau đó chọn **Computer Management**
+- Nhấp chuột phải vào nút **Start** sau đó chọn **Computer Management**
 
 <img width="1011" height="884" alt="image" src="https://github.com/user-attachments/assets/41a0244f-b5be-4589-b910-108cfde32550" />
 
@@ -85,35 +85,39 @@ How to config multi session Remote Desktop for Windows Server
 
 <img width="1393" height="357" alt="image" src="https://github.com/user-attachments/assets/344b9170-fe4f-4f59-80ef-a06def6f1418" />
 
-Ở cửa sổ mới này bạn nhấn Next để tiếp tục
+- Ở cửa sổ này nhấn **Next** để tiếp tục
 
 <img width="793" height="560" alt="image" src="https://github.com/user-attachments/assets/5dfad60f-7a76-4181-b20e-469af6b90655" />
 
-Bạn chọn Role-based or feature-based installation rồi nhấn Next
+- Chọn **Role-based or feature-based installation** rồi nhấn **Next**
 
 <img width="786" height="566" alt="image" src="https://github.com/user-attachments/assets/62ab6e1d-ee46-42c3-8b99-9f3cc1e113d8" />
 
-Phần này để nguyên -> nhấn Next
+- Phần này để nguyên -> nhấn **Next**
 
 <img width="789" height="563" alt="image" src="https://github.com/user-attachments/assets/692068aa-8d1c-43c4-883b-4e0c838872be" />
 
-Bạn tick chọn Remote Desktop Services và tiếp tục nhấn Next
+- Tick chọn **Remote Desktop Services** -> nhấn **Next** để tiếp tục
 
 <img width="789" height="558" alt="image" src="https://github.com/user-attachments/assets/ea8e9d03-7f7b-4021-bb53-a3a66f00bcea" />
 
-Nhấn Next
+- Nhấn **Next**
 
 <img width="789" height="563" alt="image" src="https://github.com/user-attachments/assets/009073f0-ee39-4a23-9441-75f694553ca5" />
 
-Bạn tick chọn 3 dịch vụ là: Remote Desktop Connection Broker, Remote Desktop Licensing, Remote Desktop Session Host. Sau mỗi lần tick sẽ có một bảng xác nhận hiện ra bạn hãy nhấn Add features
+- Tick chọn 3 dịch vụ là:
+  - Remote Desktop Connection Broker
+  - Remote Desktop Licensing
+  - Remote Desktop Session Host
+> Sau mỗi lần tick sẽ có một bảng xác nhận hiện ra hãy nhấn **Add features**
 
 <img width="815" height="572" alt="image" src="https://github.com/user-attachments/assets/ddf689fd-b119-4bd7-a277-d4c8737ea13c" />
 
-Bạn hãy tick vào Restart the destination server… để tự khởi động lại máy chủ sau khi cài xong dịch vụ. Nhấn Yes để xác nhận sau đó nhấn Install
+- Tick vào **Restart the destination server…** để tự khởi động lại máy chủ sau khi cài xong dịch vụ. Nhấn **Yes** để xác nhận sau đó nhấn **Install**
 
 <img width="783" height="575" alt="image" src="https://github.com/user-attachments/assets/f56ae5a6-3343-4ebc-b0bb-cfc7c25e337b" />
 
-Bạn chờ máy chủ cài đặt xong và khởi động lại là hoàn thành thiết lập và có thể kết nối trên 2 máy tính qua Remote Desktop vào Windows Server.
+- Chờ máy chủ cài đặt xong và khởi động lại là hoàn thành thiết lập và có thể kết nối trên 2 máy tính qua Remote Desktop vào Windows Server.
 
 <img width="794" height="573" alt="image" src="https://github.com/user-attachments/assets/a77274e7-d227-43da-af09-7b580901ae97" />
 
