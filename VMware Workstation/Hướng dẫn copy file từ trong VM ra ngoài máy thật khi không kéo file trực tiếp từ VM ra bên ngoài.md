@@ -34,6 +34,7 @@ cp ~/Downloads/*.iso /mnt/hgfs/VMShare/
 ```
 
 > **Nếu không thấy thư mục ISO xuất hiện tại VM Ubuntu tại thư mục `"ls /mnt/hgfs"` nữa thì chọn lựa chọn `"Enable until next power off or suspend"` để bật lại.
+> Hoặc thử chuyển đổi từ Enable -> Disable -> chọn OK xong rồi chuyển Disable -> Enable -> OK (Cách này được)
 > Khi tích chọn xong thì vào VM Ubuntu kiểm tra xem thư mục ISO đã có chưa `"ls /mnt/hgfs"`.
 > Có thể thực hiện ngay cả khi VM Ubuntu đang hoạt động.**
 <img width="756" height="423" alt="image" src="https://github.com/user-attachments/assets/c8a1c744-02fb-4396-af82-e1e145097219" />
