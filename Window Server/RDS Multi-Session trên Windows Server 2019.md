@@ -1,327 +1,124 @@
-1. Giới thiệu
-1.1 Mục đích
-
-Remote Desktop Services (RDS) là giải pháp của Microsoft cho phép nhiều người dùng truy cập đồng thời vào một máy chủ Windows Server thông qua giao thức Remote Desktop Protocol (RDP). Mỗi người dùng sẽ được cấp một phiên làm việc (Session) độc lập với các tài nguyên và môi trường làm việc riêng.
-
-Tài liệu này hướng dẫn triển khai mô hình RDS Multi-Session trên Windows Server 2019, bao gồm:
-
-Cài đặt Remote Desktop Services.
-Cấu hình Remote Desktop Licensing.
-Cho phép nhiều người dùng đăng nhập đồng thời.
-Quản lý Session.
-Kiểm thử và xử lý sự cố.
-Áp dụng các Best Practices trong môi trường doanh nghiệp.
-1.2 Phạm vi áp dụng
-
-Tài liệu áp dụng cho các môi trường sau:
-
-Phòng Lab.
-Doanh nghiệp nhỏ và vừa.
-Trung tâm đào tạo.
-Máy chủ ứng dụng nội bộ.
-Máy chủ làm việc từ xa.
-1.3 Đối tượng sử dụng
-System Administrator
-System Engineer
-IT Support
-Sinh viên thực hành Windows Server
-2. Tổng quan Remote Desktop Services
-2.1 Remote Desktop Services là gì?
-
-(Giữ nguyên nội dung của bạn.)
+How to config multi session Remote Desktop for Windows Server
+----
 
-Sau đó bổ sung thêm:
+## Bước 1: Tạo tài khoản và cho phép quyền truy cập Remote Desktop
 
-Đặc điểm của RDS
-Hỗ trợ nhiều người dùng đăng nhập đồng thời.
-Mỗi người dùng có Desktop và Session riêng biệt.
-Chia sẻ tài nguyên phần cứng của cùng một máy chủ.
-Hỗ trợ triển khai ứng dụng tập trung.
-Giảm chi phí đầu tư máy trạm.
+- TNhấp chuột phải vào nút **Start** sau đó chọn **Computer Management**
 
-2.2 So sánh Remote Desktop và RDS
-| Tiêu chí   | Remote Desktop    | Remote Desktop Services                         |
-| ---------- | ----------------- | ----------------------------------------------- |
-| Mục đích   | Quản trị máy chủ  | Cung cấp Desktop cho nhiều User                 |
-| Số Session | Tối đa 2          | Không giới hạn (phụ thuộc License và phần cứng) |
-| License    | Không cần RDS CAL | Cần RDS CAL                                     |
-| Người dùng | Administrator     | User thông thường                               |
-| Môi trường | Quản trị          | Doanh nghiệp                                    |
+<img width="1011" height="884" alt="image" src="https://github.com/user-attachments/assets/41a0244f-b5be-4589-b910-108cfde32550" />
 
-2.3 Thành phần của RDS
-Bổ sung bảng đầy đủ hơn:
-| Thành phần             | Chức năng                              |
-| ---------------------- | -------------------------------------- |
-| RD Session Host        | Máy chủ chạy Desktop Session           |
-| RD Licensing           | Quản lý bản quyền RDS                  |
-| RD Connection Broker   | Điều phối và cân bằng Session          |
-| RD Gateway             | Truy cập RDP qua HTTPS                 |
-| RD Web Access          | Cổng Web truy cập RemoteApp và Desktop |
-| RD Virtualization Host | Triển khai VDI với Hyper-V             |
+- Sau đó, chọn **Local Users and Group**, nhấp chuột phải vào **User** rồi chọn **New User**
 
-3. Kiến trúc triển khai
+<img width="996" height="716" alt="image" src="https://github.com/user-attachments/assets/f090aaf2-acc9-4424-a992-65dc9455e775" />
 
-Giữ nguyên sơ đồ.
+- Tạo tài khoản đăng nhập với đầy đủ thông tin như **User name**, **Password** rồi tích vào các lựa chọn cho phép `User đổi password` hoặc `password này có thời gian hết hạn hay không`. Nhấn **Create**
 
-Sau mỗi sơ đồ nên giải thích.
+<img width="1105" height="756" alt="image" src="https://github.com/user-attachments/assets/35502b52-8a68-4a6a-87b9-42f54929ab7b" />
 
-Ví dụ:
+- Tiếp theo, cần cấu hình để cho phép `User` vừa tạo được phép kết nối vào `Windows Server qua Remote Desktop`. Nhấn **Windows + I** để mở **Settings** sau đó chọn **System**
 
-3.1 Mô hình Lab
+<img width="1247" height="841" alt="image" src="https://github.com/user-attachments/assets/259f623a-9984-4e87-ad22-141f6efdb848" />
 
-Đặc điểm:
+- Nhấn vào **About** ở thanh bên trái rồi kéo xuống ở thanh bên phải để chọn **Advanced system setting**. 
 
-Một máy chủ duy nhất.
-RD Session Host và RD Licensing cài trên cùng một Server.
-Không triển khai RD Gateway.
-Phù hợp học tập và thử nghiệm.
-3.2 Mô hình Enterprise
+<img width="1051" height="825" alt="image" src="https://github.com/user-attachments/assets/e1d95618-a413-47ce-82d9-4fb374cee1d1" />
 
-Đặc điểm:
+- Nếu không thấy **Advanced system setting** thì dùng **Control Panel** thì truy cập **System** -> **Advanced system setting**
 
-Tách riêng từng vai trò.
-Có Active Directory.
-Có RD Gateway.
-Có RD Connection Broker.
-Có Load Balancing.
-4. Điều kiện triển khai
+<img width="1128" height="594" alt="image" src="https://github.com/user-attachments/assets/5a6bac6d-24b7-4b23-837d-6ba5b251cc44" />
 
-Bổ sung:
+- Trong cửa sổ mới hiện ra, nhấn thẻ **Remote** rồi nhấn nút **Select Users…**
 
-Hệ điều hành hỗ trợ
-Windows Server 2016
-Windows Server 2019
-Windows Server 2022
-Yêu cầu mạng
-IP tĩnh.
-DNS phân giải chính xác.
-Đồng bộ thời gian (NTP).
-Firewall mở cổng 3389/TCP.
-5. Chuẩn bị Server
+<img width="415" height="481" alt="image" src="https://github.com/user-attachments/assets/f0f670a1-9494-4c70-8416-8c84412181cf" />
 
-Bổ sung thêm:
+- Nhấn nút **Add** để thêm **User** được phép **Remote Desktop** vào.
 
-Cập nhật Windows
+<img width="403" height="431" alt="image" src="https://github.com/user-attachments/assets/8f54432d-cae2-406b-a420-d097c610223d" />
 
-Khuyến nghị cài đặt các bản cập nhật mới nhất trước khi triển khai RDS để tránh lỗi liên quan đến dịch vụ và tăng cường bảo mật.
+- Gõ đúng tên **User** vừa tạo sau đó nhấn **Check Names** hệ thống sẽ tự tìm ra tài khoản với đường dẫn chuẩn như hình. Nhấn **OK** để xác nhận chọn tài khoản
 
-Kiểm tra tên máy
-hostname
-Kiểm tra địa chỉ IP
-ipconfig
-Kiểm tra DNS
-nslookup localhost
-6. Cài đặt Remote Desktop Services
+<img width="500" height="369" alt="image" src="https://github.com/user-attachments/assets/1dba2bf0-f3b8-43f8-9aeb-2dd2636ff2d3" />
 
-Ngoài giao diện GUI, bổ sung thêm PowerShell.
+- Sau đó danh sách tài khoản được phép kết nối sẽ hiện ra
 
-Install-WindowsFeature RDS-RD-Server,RDS-Licensing -IncludeManagementTools
-7. Kiểm tra Role
+<img width="430" height="477" alt="image" src="https://github.com/user-attachments/assets/1270279e-664e-4351-8f11-d7e89e7df00b" />
 
-Ngoài Server Manager.
+- Ở phần này, hãy đảm bảo rằng đã chọn tại mục **Allow connections only from computers…**
 
-Có thể kiểm tra bằng:
+<img width="405" height="461" alt="image" src="https://github.com/user-attachments/assets/347a7dfa-b02c-4ff3-9361-c730ea5a9b27" />
 
-Get-WindowsFeature *RDS*
-8. RD Licensing
+## Bước 2: Cho phép nhiều User cùng truy cập bằng Remote Desktop
 
-Bổ sung:
+- Đầu tiên, nhấn nút **Start** sau đó nhập **gpedit.msc** rồi nhấn đúp vào để chọn/mở
 
-Grace Period
+<img width="927" height="738" alt="image" src="https://github.com/user-attachments/assets/664fc630-8b3b-40e6-bc4a-5dcc07ebe032" />
 
-Windows Server cho phép sử dụng RDS trong thời gian khoảng 120 ngày mà chưa cần cài đặt RDS CAL.
+- Tìm lần lượt tới **Computer Configuration** => **Administrative Templates** => **Windows Components**
 
-Sau thời gian này, máy chủ sẽ từ chối tạo các phiên Remote Desktop mới nếu chưa được cấu hình License Server hợp lệ.
+<img width="1389" height="851" alt="image" src="https://github.com/user-attachments/assets/3e336ec0-6998-4dd5-8246-9206e02b05a4" />
 
-9. Activate License
+- Tiếp tục truy cập tới **Remote Desktop Services** => **Remote Desktop Session Host** => **Connections** rồi chuyển sang bên phải tìm kiếm mục **Limit number of connections**, nhấp đúp để mở
 
-Bổ sung:
+<img width="1383" height="846" alt="image" src="https://github.com/user-attachments/assets/bb1e7de6-360f-42e4-aba5-e383dd0ed711" />
 
-Có ba phương thức:
+- Chọn **Disable** rồi nhấn **OK** để không giới hạn số người dùng truy cập. Ngoài ra, ta cũng có thể chọn **Enable** để nhập số lượng người được phép truy cập ở phần **RD Maximum Connections allowed**. Chọn xong nhấn **Apply** => **OK **để lưu
 
-Automatic Connection
-Web Browser
-Telephone
+<img width="683" height="638" alt="image" src="https://github.com/user-attachments/assets/683d5cd8-d607-45a7-b3ca-2ead36344a5a" />
 
-Khuyến nghị:
+- Tiếp tục chọn và mở **Restrict Remote Desktop Services…**
 
-Automatic Connection
-10. RDS CAL
+<img width="922" height="579" alt="image" src="https://github.com/user-attachments/assets/5fc9cfab-58c8-4d63-837f-68b289da824a" />
 
-Bổ sung giải thích.
+- Chọn **Disable** rồi nhấn **Apply** => **OK**
 
-Per User
+<img width="701" height="650" alt="image" src="https://github.com/user-attachments/assets/2d0a1fec-850d-47a0-9bc7-7ebaa6b93016" />
 
-Một người dùng có thể đăng nhập trên nhiều thiết bị.
+## Bước 3: Đăng ký dịch vụ để có thể cho phép nhiều hơn 2 User có thể truy cập Remote Desktop
 
-Ví dụ:
+> Phần này được thực hiện trên Windows Server.
 
-Laptop
+- Nhấn **Start** rồi chọn **Server Manager**
 
-Desktop
+<img width="779" height="623" alt="image" src="https://github.com/user-attachments/assets/c9af4d59-4af6-4c76-9a07-b45cd9aebd7e" />
 
-Thin Client
+- Tiếp theo, trên góc phải cửa sổ **Server Manager** -> chọn **Manage** => **Add Roles and Features**
 
-vẫn chỉ cần một License.
+<img width="1393" height="357" alt="image" src="https://github.com/user-attachments/assets/344b9170-fe4f-4f59-80ef-a06def6f1418" />
 
-Per Device
+Ở cửa sổ mới này bạn nhấn Next để tiếp tục
 
-Một thiết bị được nhiều người dùng sử dụng.
+<img width="793" height="560" alt="image" src="https://github.com/user-attachments/assets/5dfad60f-7a76-4181-b20e-469af6b90655" />
 
-Ví dụ:
+Bạn chọn Role-based or feature-based installation rồi nhấn Next
 
-Máy tính phòng LAB
-11. Licensing Mode
+<img width="786" height="566" alt="image" src="https://github.com/user-attachments/assets/62ab6e1d-ee46-42c3-8b99-9f3cc1e113d8" />
 
-Bổ sung cách kiểm tra.
+Phần này để nguyên -> nhấn Next
 
-Get-RDLicenseConfiguration
-12. Tạo User
+<img width="789" height="563" alt="image" src="https://github.com/user-attachments/assets/692068aa-8d1c-43c4-883b-4e0c838872be" />
 
-Ngoài GUI.
+Bạn tick chọn Remote Desktop Services và tiếp tục nhấn Next
 
-Có thể tạo bằng CMD.
+<img width="789" height="558" alt="image" src="https://github.com/user-attachments/assets/ea8e9d03-7f7b-4021-bb53-a3a66f00bcea" />
 
-net user user01 Password@123 /add
+Nhấn Next
 
-Hoặc PowerShell.
+<img width="789" height="563" alt="image" src="https://github.com/user-attachments/assets/009073f0-ee39-4a23-9441-75f694553ca5" />
 
-New-LocalUser
-13. Phân quyền
+Bạn tick chọn 3 dịch vụ là: Remote Desktop Connection Broker, Remote Desktop Licensing, Remote Desktop Session Host. Sau mỗi lần tick sẽ có một bảng xác nhận hiện ra bạn hãy nhấn Add features
 
-Bổ sung:
+<img width="815" height="572" alt="image" src="https://github.com/user-attachments/assets/ddf689fd-b119-4bd7-a277-d4c8737ea13c" />
 
-Kiểm tra Group.
+Bạn hãy tick vào Restart the destination server… để tự khởi động lại máy chủ sau khi cài xong dịch vụ. Nhấn Yes để xác nhận sau đó nhấn Install
 
-net localgroup "Remote Desktop Users"
+<img width="783" height="575" alt="image" src="https://github.com/user-attachments/assets/f56ae5a6-3343-4ebc-b0bb-cfc7c25e337b" />
 
-Thêm User.
+Bạn chờ máy chủ cài đặt xong và khởi động lại là hoàn thành thiết lập và có thể kết nối trên 2 máy tính qua Remote Desktop vào Windows Server.
 
-net localgroup "Remote Desktop Users" user01 /add
-14. Group Policy
+<img width="794" height="573" alt="image" src="https://github.com/user-attachments/assets/a77274e7-d227-43da-af09-7b580901ae97" />
 
-Ngoài các Policy đã có.
+Chờ máy restart cập nhật rồi test với User vừa thêm.
 
-Bổ sung:
 
-Encryption Level
-High
-Network Level Authentication
-Enabled
-Keep Alive
-Enabled
-Clipboard Redirection
-Enabled
 
-hoặc
 
-Disabled
-
-theo chính sách doanh nghiệp.
-
-15. Firewall
-
-Bổ sung:
-
-Kiểm tra Rule.
-
-Get-NetFirewallRule *Remote*
-16. Kiểm thử
-
-Bổ sung:
-
-Kiểm tra CPU.
-
-taskmgr
-
-Kiểm tra RAM.
-
-resmon
-
-Kiểm tra Event.
-
-Event Viewer
-
-↓
-
-Applications and Services Logs
-
-↓
-
-Microsoft
-
-↓
-
-Windows
-
-↓
-
-TerminalServices
-17. Quản lý Session
-
-Bổ sung:
-
-Liệt kê Session.
-
-query session
-
-Ngắt Session.
-
-logoff 2
-
-Reset Session.
-
-rwinsta 2
-18. Troubleshooting
-
-Ngoài các lỗi đã có.
-
-Bổ sung thêm:
-
-Không Remote được
-
-Kiểm tra:
-
-Test-NetConnection SERVERNAME -Port 3389
-Session bị treo
-reset session ID
-License Server không nhận
-
-Kiểm tra:
-
-Get-RDLicenseConfiguration
-Event Log
-Applications and Services Logs
-
-↓
-
-TerminalServices
-19. Best Practices
-
-Đây là phần rất quan trọng nhưng tài liệu hiện tại còn thiếu. Nên bổ sung các khuyến nghị sau:
-
-Không sử dụng tài khoản Administrator để người dùng làm việc hàng ngày.
-Quản lý người dùng thông qua Active Directory thay vì Local User trong môi trường doanh nghiệp.
-Sử dụng RD Gateway để truy cập từ Internet, không mở trực tiếp cổng 3389/TCP.
-Áp dụng Network Level Authentication (NLA) để tăng cường bảo mật.
-Cài đặt chứng chỉ SSL/TLS hợp lệ cho các dịch vụ RDS.
-Thiết lập chính sách tự động đăng xuất các Session không hoạt động.
-Theo dõi CPU, RAM và số lượng Session để tránh quá tải máy chủ.
-Thực hiện sao lưu định kỳ cấu hình và dữ liệu người dùng.
-20. Phụ lục
-Các lệnh CMD thường dùng
-query user
-query session
-logoff ID
-rwinsta ID
-hostname
-ipconfig
-gpupdate /force
-Các lệnh PowerShell
-Get-WindowsFeature *RDS*
-
-Get-NetFirewallRule *Remote*
-
-Get-RDLicenseConfiguration
-
-Install-WindowsFeature RDS-RD-Server,RDS-Licensing -IncludeManagementTools
