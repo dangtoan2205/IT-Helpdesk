@@ -63,6 +63,8 @@ backup.zip
 
 → Copy file này ra vị trí mong muốn trên máy thật.
 
+---
+
 ## 2. Copy file từ máy thật vào VM
 
 **Bước 1: Copy file vào Shared Folder**
@@ -82,7 +84,7 @@ vào:
 C:\VM-Share
 ```
 
-** Bước 2: Vào Shared Folder trong VM**
+**Bước 2: Vào Shared Folder trong VM**
 
 Trong VM mở File Explorer, nhập:
 ```
