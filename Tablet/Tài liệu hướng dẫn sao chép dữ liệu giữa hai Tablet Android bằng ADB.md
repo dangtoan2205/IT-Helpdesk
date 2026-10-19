@@ -4,7 +4,7 @@ TÀI LIỆU HƯỚNG DẪN SAO CHÉP DỮ LIỆU GIỮA HAI TABLET ANDROID BẰN
 **Áp dụng**: Samsung Galaxy Tab và các thiết bị Android hỗ trợ USB Debugging.
 
 **Công cụ**: Android SDK Platform-Tools (ADB).
-
+ADB
 **Mục đích**: Sao chép toàn bộ file và thư mục con trong `Bộ nhớ trong → Download` từ Tablet 1 về laptop, sau đó chuyển sang Tablet 2.
 
 ## 1. Chuẩn bị
