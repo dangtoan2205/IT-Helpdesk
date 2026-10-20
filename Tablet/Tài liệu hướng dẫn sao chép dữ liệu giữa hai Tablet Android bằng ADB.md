@@ -21,7 +21,7 @@ ADB
 
 **Bước 2**: Kiểm tra kết nối ADB
 ```
-adb devices
+.\adb devices
 ```
 
 Kết quả thành công:
@@ -32,7 +32,7 @@ R52XXXXXXXX    device
 
 **Bước 3**: Kiểm tra dữ liệu trong Download
 ```
-adb shell ls -la /sdcard/Download/
+.\adb shell ls -la /sdcard/Download/
 ```
 
 **Bước 4**: Tạo thư mục sao lưu trên laptop
@@ -42,7 +42,7 @@ mkdir D:\Tablet_Backup
 
 **Bước 5**: Sao chép toàn bộ dữ liệu về laptop
 ```
-adb pull /sdcard/Download/. "D:\Tablet_Backup"
+.\adb pull /sdcard/Download/. "D:\Tablet_Backup"
 ```
 
 Sau khi hoàn tất, kiểm tra các file trong `D:\Tablet_Backup`.
@@ -55,25 +55,26 @@ Sau khi hoàn tất, kiểm tra các file trong `D:\Tablet_Backup`.
 
 **Bước 2**: Kiểm tra kết nối
 ```
-adb devices
+.\adb devices
 ```
 
 Đảm bảo thiết bị hiển thị trạng thái `device`.
 
 **Bước 3**: Tạo thư mục Download nếu chưa có
-adb shell mkdir -p /sdcard/Download
-
+```
+.\adb shell mkdir -p /sdcard/Download
+```
 
 ## Bước 4: Chuyển toàn bộ dữ liệu sang Tablet 2
 ```
-adb push "D:\Tablet_Backup\." /sdcard/Download/
+.\adb push "D:\Tablet_Backup\." /sdcard/Download/
 ```
 
 Lệnh trên sao chép toàn bộ file và thư mục con từ laptop vào Download trên Tablet 2.
 
 ## Bước 5: Kiểm tra kết quả
 ```
-adb shell ls -la /sdcard/Download/
+.\adb shell ls -la /sdcard/Download/
 ```
 
 Hoặc trên Tablet 2, truy cập:
@@ -83,12 +84,12 @@ Hoặc trên Tablet 2, truy cập:
 ## 4. Một số lệnh ADB thường dùng
 | Lệnh |	Chức năng |
 | --- | --- |
-| `adb devices`	| Kiểm tra thiết bị kết nối |
-| `adb shell ls /sdcard/Download/`	| Xem danh sách file |
-| `adb pull /sdcard/Download/. "D:\Tablet_Backup"`	| Sao chép dữ liệu về laptop |
-| `adb push "D:\Tablet_Backup\." /sdcard/Download/`	| Chuyển dữ liệu sang tablet |
-| `adb install "D:\Tablet_Backup\app.apk"`	| Cài đặt ứng dụng APK |
-| `adb shell mkdir -p /sdcard/Download`	| Tạo thư mục Download |
+| `.\adb devices`	| Kiểm tra thiết bị kết nối |
+| `.\adb shell ls /sdcard/Download/`	| Xem danh sách file |
+| `.\adb pull /sdcard/Download/. "D:\Tablet_Backup"`	| Sao chép dữ liệu về laptop |
+| `.\adb push "D:\Tablet_Backup\." /sdcard/Download/`	| Chuyển dữ liệu sang tablet |
+| `.\adb install "D:\Tablet_Backup\app.apk"`	| Cài đặt ứng dụng APK |
+| `.\adb shell mkdir -p /sdcard/Download`	| Tạo thư mục Download |
 
 ## 5. Lưu ý
 - `adb pull`: Sao chép dữ liệu từ tablet về laptop.
