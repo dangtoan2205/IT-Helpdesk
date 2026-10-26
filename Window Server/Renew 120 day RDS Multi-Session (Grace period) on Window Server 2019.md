@@ -1,19 +1,19 @@
 Reset 120 day RDS Multi-Session (Grace period) on Window Server 2019
 ----
 
-Step 1: Login account `Administrator`
+**Step 1**: Login account `Administrator`
 
-Step 2: Launch Registry Editor (regedit)
+**Step 2**: Launch Registry Editor (regedit)
 
-Step 3: In regedit, browse to `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\GracePeriod`
+**Step 3**: In regedit, browse to `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\GracePeriod`
 
-Step 4: Within this registry key is a `REG_BINARY` entry whose name begins with the string L$RTMTIMEBOMB. (This is likely the only entry in this key.) The default permissions on this entry do not allow it to be modified or deleted, so these permissions must be changed
+**Step 4**: Within this registry key is a `REG_BINARY` entry whose name begins with the string `L$RTMTIMEBOMB`. (This is likely the only entry in this key.) The default permissions on this entry do not allow it to be modified or deleted, so these permissions must be changed
 
-Step 5: Right-click the **GracePeriod** folder in the left pane of regedit and select **Permissions**.
+**Step 5**: Right-click the **GracePeriod** folder in the left pane of regedit and select **Permissions**.
 
-Step 6: In the permissions window that appears, select **Administrators**, and assign this group **Full Control** permissions. Click **OK** to close the window.
+**Step 6**: In the permissions window that appears, select **Administrators**, and assign this group **Full Control** permissions. Click **OK** to close the window.
 
-Step 7: If an error indicates that the permissions could not be changed, take ownership of the folder by following these steps:
+**Step 7**: If an error indicates that the permissions could not be changed, take ownership of the folder by following these steps:
   - If the permissions window is no longer open, right-click the **GracePeriod** folder and select **Permissions** again.
   - Click **Advanced**.
   - At the top of the Advanced Security Settings window, Click the **Change** link next to the current owner.
@@ -21,15 +21,13 @@ Step 7: If an error indicates that the permissions could not be changed, take ow
   - Check the box labeled **Replace owner on sub containers and objects** and click **OK**.
   - Click **OK** again to close the permissions window, then attempt to change the permissions of the folder again.
 
-Step 8: Right-click the `L$RTMTIMEBOMB...` registry entry and select **Delete**. Click **Yes** to confirm the deletion.
+**Step 8**: Right-click the `L$RTMTIMEBOMB...` registry entry and select **Delete**. Click **Yes** to confirm the deletion.
 
-Step 9: Exit regedit.
+**Step 9**: Exit regedit.
 
-Step 10: Reboot the session host server in order for the registry change to take effect.
-
+**Step 10**: Reboot the session host server in order for the registry change to take effect.
 
 -------------
-
 Check Power Shell
 --------------
 
