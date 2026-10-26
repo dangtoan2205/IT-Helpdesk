@@ -1,4 +1,4 @@
-Renewnew 120 day RDS Multi-Session (Grace period) on Window Server 2019
+Renew 120 day RDS Multi-Session (Grace period) on Window Server 2019
 ----
 
 **Step 1**: Login account `Administrator`
